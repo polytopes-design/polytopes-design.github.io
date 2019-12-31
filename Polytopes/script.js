@@ -36,9 +36,11 @@ var init = function()
     
     // init shared renderer
     var _is_perspective = true;
+    //m_renderer = new THREE.WebGLRenderer({canvas:polyCanvas});
     m_renderer = new ThreeSharedRenderer(_is_perspective);
-    m_renderer.append_renderer_to_dom(document.body);
+    //m_renderer.append_renderer_to_dom(document.body);
     m_renderer.renderer.autoClear = true;
+    //m_renderer.autoClear = true;
 
     // init pbr
     m_pbr = new ThreePBR();

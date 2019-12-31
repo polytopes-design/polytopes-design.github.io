@@ -281,7 +281,7 @@ m_diffuse. b = 1.;
    gl_FragColor = vec4(m_col, 1.-v_fade*0.1);
 
 #else
-   gl_FragColor = vec4(m_col, 1.);
+   gl_FragColor = vec4(m_col, 1.-0.5);
 #endif
 #if defined(HAS_SHADOW)
   if(u_debug_shadow)

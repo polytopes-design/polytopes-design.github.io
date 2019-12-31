@@ -88,7 +88,8 @@ NoiseBlob.prototype.update_shadow_map = function()
 
 NoiseBlob.prototype.init_shader = function()
 {
-    var screen_res = 'vec2( ' + this.w.toFixed( 1 ) +', ' + this.h.toFixed( 1 ) + ')';
+    //var screen_res = 'vec2( ' + this.w.toFixed( 1 ) +', ' + this.h.toFixed( 1 ) + ')';
+    var screen_res = 'vec2(200, 100)';
     
     function load(_vert, _frag){
         return new THREE.ShaderMaterial( 
@@ -133,7 +134,7 @@ NoiseBlob.prototype.init_shader = function()
     this.shdr_mesh              = load(blob_vert, blob_frag);
     this.shdr_wire              = load(blob_vert, blob_frag);
     this.shdr_poly              = load(blob_vert, blob_frag);
-    this.shdr_poly2              = load(blob_vert, blob_frag);
+    this.shdr_poly2             = load(blob_vert, blob_frag);
     this.shdr_points            = load(blob_vert, blob_frag);
     this.shdr_shadow            = load(blob_vert, blob_frag);
     this.shdr_pop_points        = load(blob_vert, blob_frag);
@@ -143,16 +144,16 @@ NoiseBlob.prototype.init_shader = function()
     this.shdr_mesh.extensions.derivatives = true;
 
     this.shdr_poly.             defines.IS_MESH     = 'false'; 
-    this.shdr_poly2.             defines.IS_MESH     = 'false';  
+    this.shdr_poly2.            defines.IS_MESH     = 'false';  
     this.shdr_mesh.             defines.IS_MESH     = 'false';      //just use one shader file but define in features for this mesh
     this.shdr_mesh.             defines.HAS_SHADOW  = 'true';
 
     this.shdr_wire.             defines.IS_WIRE     = 'false';
     this.shdr_poly.             defines.IS_WIRE     = 'false';
-    this.shdr_poly.             defines.IS_POP     = 'false';
-    this.shdr_poly2.             defines.IS_POP     = 'false';
-    this.shdr_poly2.             defines.IS_WIRE     = 'false';
-    this.shdr_poly2.             defines.IS_WHITE     = 'false';
+    this.shdr_poly.             defines.IS_POP      = 'false';
+    this.shdr_poly2.            defines.IS_POP      = 'false';
+    this.shdr_poly2.            defines.IS_WIRE     = 'false';
+    this.shdr_poly2.            defines.IS_WHITE    = 'false';      //todo, aaron, currently adding
     
     this.shdr_points.           defines.IS_POINTS   = 'true';
     
@@ -193,7 +194,7 @@ NoiseBlob.prototype.init_shader = function()
     
     this.shdr_points.           blending = THREE.AdditiveBlending;
     this.shdr_poly.             blending = THREE.AdditiveBlending;
-    this.shdr_poly2.             blending = THREE.AdditiveBlending;
+    this.shdr_poly2.            blending = THREE.AdditiveBlending;
     this.shdr_wire.             blending = THREE.AdditiveBlending;
     this.shdr_pop_points.       blending = THREE.AdditiveBlending;
     this.shdr_pop_wire.         blending = THREE.AdditiveBlending;
@@ -201,7 +202,7 @@ NoiseBlob.prototype.init_shader = function()
     this.shdr_pop_wire_out.     blending = THREE.AdditiveBlending;
     
     this.shdr_poly.             transparent = true;
-    this.shdr_poly2.             transparent = true;
+    this.shdr_poly2.            transparent = true;
     this.shdr_wire.             transparent = false;
     this.shdr_points.           transparent = true;
     this.shdr_pop_points.       transparent = true;
@@ -223,14 +224,14 @@ NoiseBlob.prototype.init_shader = function()
     //console.log(this.shdr_poly);
 };
 
-console.log(THREE.REVISION);
+//console.log(THREE.REVISION);
 NoiseBlob.prototype.init_texture = function()
 {
-    this.tex_sprite = new THREE.TextureLoader().load( "../common/assets/sprite_additive_rect.png" );
-    this.tex_sprite.wrapS = THREE.ClampToEdgeWrapping;
-    this.tex_sprite.wrapT = THREE.ClampToEdgeWrapping;
-    this.tex_sprite.magFilter = THREE.LinearFilter;
-    this.tex_sprite.minFilter = THREE.LinearFilter;
+//    this.tex_sprite = new THREE.TextureLoader().load( "../common/assets/sprite_additive_rect.png" );
+//    this.tex_sprite.wrapS = THREE.ClampToEdgeWrapping;
+//    this.tex_sprite.wrapT = THREE.ClampToEdgeWrapping;
+//    this.tex_sprite.magFilter = THREE.LinearFilter;
+//    this.tex_sprite.minFilter = THREE.LinearFilter;
 };
 var loader;
 var sce;
@@ -283,11 +284,11 @@ NoiseBlob.prototype.init_scene = function()
     // this.scene.add(_mesh_cube);
 
 
-sce = this.scene;
-shad = this.shdr_poly;
+sce     = this.scene;
+shad    = this.shdr_poly;
 shadwire= this.shdr_poly2;
-mssh = this.shdr_points;
-self = this;
+mssh    = this.shdr_points;
+self    = this;
     loader = new THREE.FontLoader();
     // loader.load('particleEqualizer_files/optimer_regular.typeface.json', function ( font )
     loader.load('Polytopes/TypoGraphica_Regular.json', function ( font ) 
@@ -402,7 +403,7 @@ self = this;
             }
         }
         // console.log(lengths);
-        console.log("ppp" + opposites.length)
+        //console.log("ppp" + opposites.length)
         for (var i = 0; i < opposites.length; i++)
         for (var k = 0; k < 2; k++)
         {
@@ -502,21 +503,21 @@ self = this;
 
             }
         }
-        console.log(all2)
-        console.log(solI);
-        console.log("oppI");
-        console.log(oppI);
+        //console.log(all2)
+        //console.log(solI);
+        //console.log("oppI");
+        //console.log(oppI);
+        
         //for each set of opposites, 
         //go through all the sets(lines) with to get the outside verticies
         //go through all of them to get ones that match inside vericies to determine the faces  
 
         group = new THREE.Group();
-                console.log(SolFac)
+                //console.log(SolFac)
                 // var lineMaterial = new THREE.LineBasicMaterial({color: 0xffffff, wireframe: true, morphTargets: true  })
         for (var i = 0; i < solI.length; i++)
         {
-            var Poly = new THREE.Geometry();
-            var Poly2 = new THREE.Geometry();
+            var Poly  = new THREE.Geometry();
             Sols3D[i] = Poly;
             
             var Offs = new THREE.Vector3(0,0,0);
@@ -543,31 +544,35 @@ self = this;
             // Poly.morphTargets[0] = {vertices: morphVerts};
 
             var polyLine = new THREE.Mesh(Poly, shad);
+            var polyLinew = new THREE.Mesh(Poly, shadwire);
             // var polyLine2 = new THREE.Mesh(Poly2, shadwire);
 
             // polyLine.drawMode = THREE.TriangleStripDrawMode;
 
             group.add(polyLine);
+            group.add(polyLinew);
             // sce.add(polyLine);
             // console.log(polyLine);
             // polyLine.updateMorphTargets();
             // polyLine.morphTargetInfluences = [];
              // polyLine.morphTargetInfluences[ 0 ] = 1;
-            
+            polyLine.doubleSided = true;
             var L = Math.abs(Offs.x) + Math.abs(Offs.y) + Math.abs(Offs.z);
             Offs.multiplyScalar(L * L /3000);
             // sce.add(polyLine2); polyLine2.position.lerp(Offs,1);          
             this.Meshes.push([polyLine, Offs]);
+            this.Meshes.push([polyLinew, Offs]);
 
         }
+
         var S = 15;
         var D = 4;
-            var Poly2 = new THREE.Geometry();
-            subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,S,-D), 4);
-            subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,-S,-D), 4);
+        var Poly2 = new THREE.Geometry();
+        subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,S,-D), 4);
+        subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,-S,-D), 4);
 
-            var polyLine = new THREE.Mesh(Poly2, shadwire);
-            sce.add(polyLine);
+        var polyLine = new THREE.Mesh(Poly2, shadwire);
+        sce.add(polyLine);
 
     // group.rotateOnWorldAxis(new THREE.Vector3(0,0,1), Math.PI/4);
     // group.rotateOnAxis(new THREE.Vector3(0,1,0), Math.PI/6);
@@ -575,21 +580,21 @@ self = this;
         sce.add(group);
 
 
-var ggeometry = new THREE.BoxGeometry(6, 4, 1);
+//var ggeometry = new THREE.BoxGeometry(6, 4, 1);
 
-var geometryMorph = new THREE.BoxGeometry(3, 4, 1);
-var mmat =  new THREE.LineBasicMaterial( {color: 0xffffff, wireframe: true, morphTargets: true  } );
+//var geometryMorph = new THREE.BoxGeometry(3, 4, 1);
+//var mmat =  new THREE.LineBasicMaterial( {color: 0xffffff, wireframe: true, morphTargets: true  } );
 
 // // Set morphtargets for cube
-ggeometry.morphTargets[0] = {vertices: geometryMorph.vertices};
+//ggeometry.morphTargets[0] = {vertices: geometryMorph.vertices};
 // ggeometry.computeMorphNormals();
 
-mmesh = new THREE.Mesh( ggeometry, shad );            mmesh.morphTargetInfluences[ 0 ] = 1;
-console.log(mmesh);
+//mmesh = new THREE.Mesh( ggeometry, shad );            mmesh.morphTargetInfluences[ 0 ] = 1;
+//console.log(mmesh);
 // sce.add(mmesh);
     }
 
-    console.log(this.Meshes);
+  //  console.log(this.Meshes);
 
     function subdiv(vertices, faces, a,b,c, depth)
     {
@@ -730,7 +735,7 @@ NoiseBlob.prototype.update_positions = function()
 
 };
 
-NoiseBlob.prototype.debug_shadow_map = function(_show)
+//NoiseBlob.prototype.debug_shadow_map = function(_show)
 {
     this.shdr_mesh.uniforms.u_debug_shadow.value = _show;
 };

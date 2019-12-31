@@ -51,7 +51,7 @@ if (this.h > this.w) this.h = this.w;
 
 ThreeSharedRenderer.prototype.init_renderer = function()
 {
-    this.renderer = new THREE.WebGLRenderer({canvas:polyCanvas});
+    this.renderer = new THREE.WebGLRenderer({canvas:polyCanvas, antialias:true});
 
     this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize( this.w, this.h );

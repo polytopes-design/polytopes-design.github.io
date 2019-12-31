@@ -220,7 +220,7 @@ void main()
 #endif
 
 #if defined(IS_WHITE)
-    m_pos += (_rand_point_dir);// * 0.11 * m_level);
+    //m_pos += (_rand_point_dir);// * 0.11 * m_level);
 v_fade = length(m_pos);
     // v_noise = 1.;
 #endif
