@@ -1,4 +1,4 @@
-var NoiseBlob = function(_renderer, _analyzer, _light)
+var NoiseBlob = function(_renderer, _analyzer, _light, _is_mobile)
 { 
     this.is_init = false;
     this.show_hdr = true;
@@ -6,6 +6,7 @@ var NoiseBlob = function(_renderer, _analyzer, _light)
     this.renderer = _renderer;
     this.audio_analyzer = _analyzer;
     this.light = _light;
+    this.is_mobile = _is_mobile;
 
     this.w = _renderer.w;
     this.h = _renderer.h;
@@ -567,6 +568,9 @@ self    = this;
 
         var S = 15;
         var D = 4;
+        if (this.is_mobile == false)
+        {
+         
         var Poly2 = new THREE.Geometry();
         subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,S,-D), 4);
         subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,-S,-D), 4);
@@ -577,8 +581,9 @@ self    = this;
     // group.rotateOnWorldAxis(new THREE.Vector3(0,0,1), Math.PI/4);
     // group.rotateOnAxis(new THREE.Vector3(0,1,0), Math.PI/6);
     // group.rotateOnAxis(new THREE.Vector3(1,0,0), Math.PI/4);
+   
+        }
         sce.add(group);
-
 
 //var ggeometry = new THREE.BoxGeometry(6, 4, 1);
 

@@ -23,9 +23,10 @@ function onMouseMove(event)
 
 var init = function()
 {
+    m_device_checker = new DeviceChecker();
     // device_checker
     // m_device_checker = new DeviceChecker();
-    var _is_mobile = true;//m_device_checker.is_mobile();
+    var _is_mobile = m_device_checker.is_mobile();
     // var _is_retina = m_device_checker.is_retina();
 
     // init audio input analyzer
@@ -48,7 +49,7 @@ var init = function()
     m_light = new ThreePointLight();
 
     // init blob
-    m_blob = new NoiseBlob(m_renderer, m_analyzer, m_light);
+    m_blob = new NoiseBlob(m_renderer, m_analyzer, m_light, _is_mobile);
     m_blob.set_PBR(m_pbr);
     // if(_is_retina) m_blob.set_retina();
     
