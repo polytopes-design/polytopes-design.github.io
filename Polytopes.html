@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+<html><head>
+<title>Polytopes.design</Title>
+<link rel="apple-touch-icon" sizes="180x180" href="Polytopes/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="Polytopes/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="Polytopes/favicon-16x16.png">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+
+<script type="text/javascript" src="Polytopes/typeface.js"></script>
+<!--meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"-->
+<!--css-->
+<link rel="stylesheet" type="text/css" href="Polytopes/fstyle.css">
+<!--libraries-->
+<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script-->
+
+<script type="text/javascript" src="Polytopes/three.js"></script>
+
+<style>@media print {#ghostery-purple-box {display:none !important}}</style>
+<!--script type="text/javascript" src="Polytopes/dat.js"></script-->
+
+<script type="text/javascript" src="Polytopes/AudioAnalyzer.js"></script>
+<script type="text/javascript" src="Polytopes/ThreeSharedRenderer.js"></script>
+<script type="text/javascript" src="Polytopes/ThreePBR.js"></script>
+<script type="text/javascript" src="Polytopes/ThreePointLight.js"></script>
+<script type="text/javascript" src="Polytopes/DeviceChecker.js"></script>
+<!--shaders-->
+<script type="text/javascript" src="Polytopes/blob_002.js"></script>
+<script type="text/javascript" src="Polytopes/blob.js"></script>
+<script type="text/javascript" src="Polytopes/skybox.js"></script>
+<script type="text/javascript" src="Polytopes/skybox_002.js"></script>
+<!--objects-->
+<script type="text/javascript" src="Polytopes/TypoGraphica_Regular.js"></script>
+<script type="text/javascript" src="Polytopes/NoiseBlob.js"></script>
+<script type="text/javascript" src="Polytopes/Ctrl.js"></script>
+<!--main-->
+<script type="text/javascript" src="Polytopes/script.js"></script>     
+
+<style>
+
+form
+{
+    display: table;
+}
+label, input
+{
+    display: table-row;
+}
+</style>
+<style>
+
+.principles
+{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media screen and (max-width: 1200px) 
+{
+    .principles
+    {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width: 700px) 
+{
+    .principles
+    {
+        grid-template-columns: 1fr;
+    }
+}
+.princidplesblock, .chdat
+{
+    background-color: #000;
+    padding-top: 1em;
+    padding-bottom: 3em;
+    background-image: linear-gradient(#000,#003678,#000);
+    background-image: linear-gradient(30deg, #000 25%, #003678 27%, #000 29%);
+    /*color:#fff;*/
+}
+.abdout
+{
+    padding:20px;
+    overflow: auto;
+    /*padding-bottom: 3em;*/
+    text-align: center;
+    background-color: #004fa9;
+    /*color: white;*/
+    /*font-size: larger;*/
+    background-image: linear-gradient(#000,#003678,#000);
+    background-image: linear-gradient(130deg, #325068 45%, #3d5179 47%);
+    background-image: linear-gradient(130deg, #000 45%, #003678 47%, #000 49%);
+}
+.about p
+{
+    font-size: 1.2em;
+}
+div
+{
+    margin:0px;
+}
+canvas
+{
+    margin:0px;
+    display: block;
+    -webkit-box-shadow: 0 0 50px black;
+       -moz-box-shadow: 0 0 50px black;
+            box-shadow: 0 0 50px black;
+}
+body
+{
+    background:#000;
+    color: #fc8;
+    margin:0px;
+    font-family: 'sans';    
+    background-image:   repeating-linear-gradient(-30deg, #0000 25vw, #00367866 27vw, #0000 29vw, #0000 80vw),
+                        repeating-linear-gradient( 70deg, #0000 45vw, #00367866 47vw, #0000 49vw, #0000 104vw),
+                        repeating-linear-gradient( 10deg, #0000 45vw, #00367866 47vw, #0000 49vw, #0000 90vw);
+
+}
+li
+{
+    margin-bottom:1em;
+}
+.myGlower 
+{
+  /*  color:#fef0ba; 
+    background-color: #5a5353;
+    border-radius: 5px;
+    border: 1px solid;    
+    border-color: orange;
+    -webkit-transition: border 1s ease, box-shadow 1s ease;
+       -moz-transition: border 1s ease, box-shadow 1s ease;
+            transition: border 1s ease, box-shadow 1s ease;
+
+    margin: 20px;
+    padding:30px;
+    -webkit-box-shadow: 0 0 10px orange;
+       -moz-box-shadow: 0 0 10px orange;
+            box-shadow: 0 0 10px orange;*/
+
+
+/*color: #c7ebff;*/
+color: #fdb;
+    background-color: #4a6786;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #d5d9ff;
+    -webkit-transition: border 1s ease, box-shadow 1s ease;
+    -moz-transition: border 1s ease, box-shadow 1s ease;
+    transition: border 1s ease, box-shadow 1s ease;
+    /*width: 100%;*/
+    margin: 20px;
+    padding: 30px;
+    -webkit-box-shadow: 0 0 10px orange;
+    -moz-box-shadow: 0 0 10px orange;
+    box-shadow: 0 0 20px #008dff;
+    background-image: linear-gradient(130deg, #325068 45%, #3d5179 47%);
+    background-image: linear-gradient(30deg, #000 25%, #003678 27%, #000 29%);
+    background-image: repeating-linear-gradient(-30deg, #0006 25%, #00367866 27%, #0006 29%, #0006 80%),
+                        linear-gradient(70deg, #0006 45%, #00367866 47%, #0006 49%),
+                        repeating-linear-gradient( 10deg, #0006 45%, #00367866 47%, #0006 49%, #0006 90%);
+
+}
+
+
+
+.myGlower:hover 
+{
+    border-color: magenta;
+    /*border: 1px solid;    */
+    -webkit-box-shadow: 0 0 30px orange;
+       -moz-box-shadow: 0 0 30px orange;
+            box-shadow: 0 0 30px orange;
+}
+
+.skinny
+{
+    padding:1px;
+    /*border-top: none;*/
+    /*background-color: #0000;*/
+}
+div
+{
+    margin-bottom:6em;
+}
+
+h1
+{
+    text-align: center;
+    font-size: 2.3em;
+}
+h2
+{
+    text-align: center;
+    font-size: 2em;
+}
+h3
+{
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 0.8em;
+}
+h4
+{
+    text-align: center;
+    font-size: 2em;
+    margin-top: 0.5em;/*
+    background-image: linear-gradient(130deg, #2f5f77 45%,#2a548f 47%);
+    background-image: linear-gradient(-30deg, #0006 25%, #00367866 27%, #0006 29%),linear-gradient(45deg, #000 75%, #003678 77%, #0006 79%);*/
+    box-shadow: 0 0 20px #0006;
+}
+h5
+{
+    font-size: 2em;
+    margin: 0.5em;
+    text-align: center;
+    /*margin-left: 0;*/
+}
+h6
+{
+    font-size: 1.5em;
+    margin: 0.5em;
+    text-align: center;
+    /*margin-left: 0;*/
+}
+
+.centerblock
+{
+    max-width: 700px;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:40px;
+    margin-bottom:30px;
+    line-height: 2em;
+    /*text-align: center;*/
+}
+.quote
+{
+    /*font-family: monospace;*/
+    font-size: 1.5em;
+    background-color: black;
+}
+
+img
+{
+        width: 70%;
+        display: block;
+        margin:auto;
+}
+
+
+    .duo, .trio, .quad
+    {
+        display:grid;
+    }
+    .duo > div, .trio > div, .quad > div
+    {
+        padding:1em;
+    }
+    .duo
+    {
+        grid-template-columns: 1fr 1fr;
+    }
+    .trio
+    {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .quad
+    {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    /*
+    @media screen and (max-width: 1200px) 
+    {
+        .trio
+        {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }*/
+    @media screen and (max-width: 700px) 
+    {
+        .trio, .quad
+        {
+            grid-template-columns: 1fr;
+        }
+
+        .reordertop, .reordermid
+        {
+            order:0;
+        }
+    }
+    @media screen and (max-width: 900px) 
+    {
+        .duo
+        {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+<!--
+.words
+{
+    /*border:1px;*/
+    padding:1em 2em;
+    display:inline-block;
+    background-color: lightblue;
+    /*margin-top: -0.5em;*/
+    /*margin-right:auto;*/
+    margin-left:5px;
+    /*color:white;*/
+    -webkit-box-shadow: 0 0 10px grey;
+       -moz-box-shadow: 0 0 10px grey;
+            box-shadow: 0 0 10px grey;
+    font-weight: bold;
+    font-style: italic;
+    /*font-family: 'bookman old style';*/
+    font-family: 'Palatino';
+    font-size: 1.2em;
+}
+.words:nth-child(2n)
+{
+    /*float:right;*/
+    /*margin-left:auto;*/
+    margin-right:0px;
+    float:left;
+    margin-left:15px;
+    border-radius: 10px;
+    /*margin-right: -2em;*/
+    /*margin-left: 4em;*/
+    background-color: lightblue;
+
+    -ms-transform:      rotate(2deg); /* IE 9 */
+    -webkit-transform:  rotate(2deg); /* Safari */
+    transform:          rotate(2deg);
+}
+.words:nth-child(3n-1)
+{
+    float:right;
+    clear:left;
+    /*margin-left:auto;*/
+    margin-right:10px;
+    /*margin-right: -2em;*/
+    /*margin-left: 4em;*/
+    background-color: pink;
+    margin-left:30px;
+    /*border-radius: 40px;*/
+
+    -ms-transform:      rotate(-2deg); /* IE 9 */
+    -webkit-transform:  rotate(-2deg); /* Safari */
+    transform:          rotate(-2deg);
+}
+.words:nth-child(40pxn+3)
+{
+    border-radius: 80px;
+}
+.words:nth-child(3n+1)
+{
+    /*float:right;*/
+    /*margin-left:auto;*/
+    margin-right:30px;
+    /*float:left;*/
+    margin-left:15px;
+    /*margin-right: -2em;*/
+    /*margin-left: 4em;*/
+    background-color: #cfe0bf;
+}
+</style>
+ -->
+</head>
+
+<body>
+    <canvas id="polyCanvas"></canvas>
+<div class=about>
+<h3>Got Problems...? Great!</h3>
+
+<div class="centerblock myGlower">
+<h5>Welcome to Polytopes.design</h5>
+<h6>Associated Engineering Consultants</h6>
+
+<p/>Our engineers are looking for challenges;
+<br>problems that they can tear apart, 
+<br>attack from new perspectives,
+<br>and apply all of the tricks collected through decades of experience.
+
+<p/>
+<p/>Whether your system is mechanical, electrical, logical, or mathematical; 
+<br>and you need to increase performance, profit, or precision; 
+<br>get in touch with us to describe your application.
+
+<p/>
+<p/>We will examine your system and environment from outside the box 
+<br>and provide you with IP that is unique and fit for purpose.
+
+</div>
+</div>
+
+<div class=principlesblock>
+<h3>Our Guiding Principles</h3>
+<div class=principles>
+
+
+<div class=myGlower><h4>More&nbspData... More&nbspBetter</h4>
+We understand that using all possible data intelligently; in sensor-fusion algorithms or integrated into equipment models; provides vastly better performance than naive implementations that ignore complex interactions not obvious to the designer.
+
+<p />Careful design of systems to constrain inputs and remove sources of error further improves performance.
+</div>
+
+<div class=myGlower><h4>What was the question?</h4>
+Realising that some questions are better than others is key to finding the best solution to complex problems.
+
+<p />Many designs integrate assumptions made before the initiation of the project, which may not be relevant in every specific case.
+
+<p />We test all assumptions, and ask the stupid questions that actually may turn out not to be.
+</div>
+
+<div class=myGlower><h4>Simplify... Man</h4>
+When problems can be condensed to their elementary components, the preconceived restrictions on design choices can be eliminated, opening up further avenues for improvement, and often lower cost solutions.
+
+<p />Simplifying to first principles can open up a general case, which may provide the designers with centuries of research from seemingly unrelated fields which can be applied to your system.
+</div>
+
+<div class=myGlower><h4>80 : 20</h4>
+Also known as the Pareto principle, we focus on the bottlenecks in the system that are restricting performance.
+
+<p />By focusing on the big issues, large gains can be made with minimal effort, minimising development cost and time to market.
+</div>
+
+</div>
+</div>
+<div class=about>
+<div class="myGlower centerblock">
+    <h4>Clarke's Laws of Progress</h4><i>
+    <ol>
+    <li />When an elderly scientist states that something is possible, he is almost certainly right.
+    <br>When he states that something is impossible, he is very probably wrong.
+
+    <li />The only way of discovering the limits of the possible is to venture a little way past them into the impossible.
+
+    <li />Any sufficiently advanced technology is indistinguishable from magic.
+</ol>
+<p /><b>— Arthur C. Clarke</b></i>
+</div>
+</div>
+<div class=principlesblock>
+<h3>Case Studies</h3>
+<div class=principles>
+
+
+<div class=myGlower><h4>ARW Rejection</h4>
+We understand that using all possible data intelligently; in sensor-fusion algorithms or integrated into equipment models; provides vastly better performance than naive implementations that ignore complex interactions not obvious to the designer.
+
+<p />Careful design of systems to constrain inputs and remove sources of error further improves performance.
+</div>
+
+<div class=myGlower><h4>Bias Modulations</h4>
+Realising that some questions are better than others is key to finding the best solution to complex problems.
+
+<p />Many designs integrate assumptions made before the initiation of the project, which may not be relevant in every specific case.
+
+<p />We test all assumptions, and ask the stupid questions that actually may turn out not to be.
+</div>
+
+<div class=myGlower><h4>Whipple Gear</h4>
+When problems can be condensed to their elementary components, the preconceived restrictions on design choices can be eliminated, opening up further avenues for improvement, and often lower cost solutions.
+
+<p />Simplifying to first principles can open up a general case, which may provide the designers with centuries of research from seemingly unrelated fields which can be applied to your system.
+</div>
+
+<div class=myGlower><h4>Thermal PC</h4>
+Also known as the Pareto principle, we focus on the bottlenecks in the system that are restricting performance.
+
+<p />By focusing on the big issues, large gains can be made with minimal effort, minimising development cost and time to market.
+</div>
+
+</div>
+</div>
+<h3>About Polytopes.design</h3>
+<div class="centerblock myGlower">
+<p/>At polytopes.design we like to think we add an extra dimension to thinking outside of the box.
+<p/>Our logo is an exploded view of a 24-cell, aka an icosi-tetra-choron. This object lives in 4 dimensions, and contains 24 3D solids. has hundreds of planes of symmetry, reflections between seemingly discocnnected fields.
+</div>
+
+
+    <h3>Let's Chat</h3>
+<div class=chat>
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+    eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+    voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+    </p>
+    <form name="contactForm" id="contactForm" method="post" action="">
+        
+                <label for="contactFname">First Namejjjjjj <span class="required">*</span>                             </label>           
+                    <input name="contactFname" id="contactFname" placeholder="First Name" value="" type="text">     
+                <label for="contactEmail">Email <span class="required">*</span></label>                                
+                    <input name="contactEmail" id="contactEmail" placeholder="Email" value="" type="text">                          
+                <label for="contactSubject">Subject</label>                                
+                    <input name="contactSubject" id="contactSubject" placeholder="Subject" value="" type="text">                            
+
+          <div class="row">
+
+                 <label for="contactMessage">Message <span class="required">*</span></label>
+                 <textarea name="contactMessage" id="contactMessage" placeholder="Your Message" rows="10" cols="50"></textarea>
+
+          </div>
+
+          <div>
+             <button class="submit full-width">Send Message</button>
+             <div id="image-loader">
+                <img src="images/loader.gif" alt="">
+             </div>
+          </div>
+            
+    </form> 
+
+    <div id="message-warning">
+    </div>
+    <div id="message-success">
+       <i class="fa fa-check"></i>Your message was sent, thank you!<br>
+    </div>
+</div>
+<div class="other">
+
+    <div class="quad">
+        <div>
+            <h5 class="logotext">Polytopes.design</h5>
+            <img src="Polytopes/octahedron.svg">
+        </div>
+        <div><h5>
+            About</h5>
+        </div>
+        <div><h5>
+            Contact</h5>
+        </div>
+        <div><h5>
+            Support</h5>
+        </div>
+    </div>
+</div>
+</body></html>
