@@ -563,8 +563,8 @@ self = this;
         var S = 15;
         var D = 4;
             var Poly2 = new THREE.Geometry();
-            subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,S,-D), 3);
-            subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,-S,-D), 3);
+            subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,S,-D), 4);
+            subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,-S,-D), 4);
 
             var polyLine = new THREE.Mesh(Poly2, shadwire);
             sce.add(polyLine);
