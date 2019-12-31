@@ -142,33 +142,33 @@ NoiseBlob.prototype.init_shader = function()
     this.shdr_pop_wire_out      = load(blob_vert, blob_frag);
     this.shdr_mesh.extensions.derivatives = true;
 
-    this.shdr_poly.             defines.IS_MESH     = 'true'; 
-    this.shdr_poly2.             defines.IS_MESH     = 'true';  
-    this.shdr_mesh.             defines.IS_MESH     = 'true';      //just use one shader file but define in features for this mesh
+    this.shdr_poly.             defines.IS_MESH     = 'false'; 
+    this.shdr_poly2.             defines.IS_MESH     = 'false';  
+    this.shdr_mesh.             defines.IS_MESH     = 'false';      //just use one shader file but define in features for this mesh
     this.shdr_mesh.             defines.HAS_SHADOW  = 'true';
 
-    this.shdr_wire.             defines.IS_WIRE     = 'true';
-    this.shdr_poly.             defines.IS_WIRE     = 'true';
-    this.shdr_poly.             defines.IS_POP     = 'true';
-    this.shdr_poly2.             defines.IS_POP     = 'true';
-    this.shdr_poly2.             defines.IS_WIRE     = 'true';
-    this.shdr_poly2.             defines.IS_WHITE     = 'true';
+    this.shdr_wire.             defines.IS_WIRE     = 'false';
+    this.shdr_poly.             defines.IS_WIRE     = 'false';
+    this.shdr_poly.             defines.IS_POP     = 'false';
+    this.shdr_poly2.             defines.IS_POP     = 'false';
+    this.shdr_poly2.             defines.IS_WIRE     = 'false';
+    this.shdr_poly2.             defines.IS_WHITE     = 'false';
     
     this.shdr_points.           defines.IS_POINTS   = 'true';
     
     this.shdr_shadow.           defines.IS_SHADOW   = 'true';
     
-    this.shdr_pop_points.       defines.IS_POINTS   = 'true';
-    this.shdr_pop_points.       defines.IS_POP      = 'true';
+    this.shdr_pop_points.       defines.IS_POINTS   = 'false';
+    this.shdr_pop_points.       defines.IS_POP      = 'false';
     
-    this.shdr_pop_wire.         defines.IS_WIRE     = 'true';
-    this.shdr_pop_wire.         defines.IS_POP      = 'true';
+    this.shdr_pop_wire.         defines.IS_WIRE     = 'false';
+    this.shdr_pop_wire.         defines.IS_POP      = 'false';
     
-    this.shdr_pop_points_out.   defines.IS_POINTS   = 'true';
-    this.shdr_pop_points_out.   defines.IS_POP_OUT  = 'true';
+    this.shdr_pop_points_out.   defines.IS_POINTS   = 'false';
+    this.shdr_pop_points_out.   defines.IS_POP_OUT  = 'false';
     
-    this.shdr_pop_wire_out.     defines.IS_WIRE     = 'true';
-    this.shdr_pop_wire_out.     defines.IS_POP_OUT  = 'true';
+    this.shdr_pop_wire_out.     defines.IS_WIRE     = 'false';
+    this.shdr_pop_wire_out.     defines.IS_POP_OUT  = 'false';
 
     // this.shdr_poly.             defines.USE_MORPHTARGETS = 'true';  
 
@@ -202,12 +202,12 @@ NoiseBlob.prototype.init_shader = function()
     
     this.shdr_poly.             transparent = true;
     this.shdr_poly2.             transparent = true;
-    this.shdr_wire.             transparent = true;
+    this.shdr_wire.             transparent = false;
     this.shdr_points.           transparent = true;
     this.shdr_pop_points.       transparent = true;
-    this.shdr_pop_wire.         transparent = true;
+    this.shdr_pop_wire.         transparent = false;
     this.shdr_pop_points_out.   transparent = true;
-    this.shdr_pop_wire_out.     transparent = true;
+    this.shdr_pop_wire_out.     transparent = false;
 
     this.shdr_wire.             depthTest = false;
     this.shdr_points.           depthTest = false;
@@ -218,9 +218,9 @@ NoiseBlob.prototype.init_shader = function()
 
     // this.shdr_poly.morphTargets = true;
     // this.shdr_poly2.morphTargets = true;
-    this.shdr_poly.wireframe = true;
+    this.shdr_poly.wireframe = false;
     this.shdr_poly2.wireframe = true;
-console.log(this.shdr_poly);
+    //console.log(this.shdr_poly);
 };
 
 console.log(THREE.REVISION);
@@ -533,7 +533,7 @@ self = this;
                 // console.log(SolFac[i][j])
                 var face = SolFac[i][j];
                 // subdiv(Poly2.vertices,   Poly2.faces, Vecs3D[face[0]],        Vecs3D[face[1]],        Vecs3D[face[2]],        0);
-                subdiv(Poly.vertices,   Poly.faces, Vecs3D[face[0]],        Vecs3D[face[1]],        Vecs3D[face[2]],        2);
+                subdiv(Poly.vertices,   Poly.faces, Vecs3D[face[0]],        Vecs3D[face[1]],        Vecs3D[face[2]],        0);
                 // subdiv(morphVerts,      null,       Vecs3D[face[0]].Lerp2,  Vecs3D[face[1]].Lerp2,  Vecs3D[face[2]].Lerp2,  3);
                 Offs.add(Vecs3D[face[0]]);
                 Offs.add(Vecs3D[face[1]]);
