@@ -12,27 +12,17 @@ var m_device_checker;
 var mouse = [];
 
 // Follows the mouse event
-function onMouseMove(event) {
-
+function onMouseMove(event) 
+{
     // Update the mouse variable
     event.preventDefault();
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.x = + (event.clientX / window.innerWidth)  * 2 - 1;
     mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-
- // Make the sphere follow the mouse
-  // var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
-  //   vector.unproject( camera );
-  //   var dir = vector.sub( camera.position ).normalize();
-  //   var distance = - camera.position.z / dir.z;
-  //   var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
-  //   mouseMesh.position.copy(pos);
-  
-    // Make the sphere follow the mouse
-//  mouseMesh.position.set(event.clientX, event.clientY, 0);
 };
 
 
-var init = function(){
+var init = function()
+{
     // device_checker
     // m_device_checker = new DeviceChecker();
     var _is_mobile = true;//m_device_checker.is_mobile();
@@ -73,7 +63,8 @@ var init = function(){
 };
 
 
-var update = function(){
+var update = function()
+{
     setTimeout(function(){requestAnimationFrame( update );}, 60);
     
     // update audio analyzer
@@ -85,6 +76,7 @@ var update = function(){
 
     // console.log("d");
     m_blob.update_positions();
+
     // update pbr
     // m_pbr.exposure = 5. 
     //     + 30. * m_analyzer.get_level();
@@ -95,12 +87,14 @@ var update = function(){
 
     // update renderer
     // if(m_ctrl.params.cam_ziggle) 
-        m_renderer.ziggle_cam(m_analyzer.get_history(), mouse.x, mouse.y); //moves  camera
+    
+    m_renderer.ziggle_cam(m_analyzer.get_history(), mouse.x, mouse.y); //moves  camera
+
     m_renderer.render(m_render_queue);
 };
 
 
-document.addEventListener('DOMContentLoaded', function()
+window.addEventListener('load', function()
 {
     init();
     update();
