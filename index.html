@@ -35,35 +35,106 @@
 <script type="text/javascript" src="Polytopes/NoiseBlob.js"></script>
 <script type="text/javascript" src="Polytopes/Ctrl.js"></script>
 <!--main-->
-<script type="text/javascript" src="Polytopes/script.js"></script>     
+<script type="text/javascript" src="Polytopes/script.js"></script>
 
 <style>
 
 form
 {
     display: table;
+
 }
 label, input
 {
     display: table-row;
 }
-</style>
-<style>
+form *
+{
+	width: 90%
+}
 
+
+.duo, .trio, .quad, .sixset
+{
+	display:grid;
+}
+.duo > div, .trio > div, .quad > div
+{
+	padding:1em;
+}
+.duo
+{
+	grid-template-columns: 1fr 1fr;
+}
+.trio, .sixset
+{
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.quad
+{
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media screen and (max-width: 900px)
+{
+	.duo
+	{
+		grid-template-columns: 1fr;
+	}
+}
+@media screen and (max-width: 1200px)
+{
+	.trio, .quad, .sixset
+	{
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.reordertop, .reordermid
+	{
+		order:0;
+	}
+}
+@media screen and (max-width: 700px)
+{
+	.trio, .quad, .sixset
+	{
+		grid-template-columns: 1fr;
+	}
+
+	.reordertop, .reordermid
+	{
+		order:0;
+	}
+}
+
+/*
+@media screen and (max-width: 1200px)
+{
+	.trio
+	{
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}*/
 .principles
 {
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-@media screen and (max-width: 1200px) 
+.casestudies
+{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media screen and (max-width: 1200px)
 {
     .principles
     {
         grid-template-columns: 1fr 1fr;
     }
 }
-@media screen and (max-width: 600px) 
+@media screen and (max-width: 600px)
 {
     .principles
     {
@@ -113,37 +184,37 @@ body
     background:#000;
     color: #fc8;
     margin:0px;
-    font-family: 'sans';    
+    font-family: 'sans';
     background-image:   repeating-linear-gradient(-30deg, #0000 25vw, #00367866 27vw, #0000 29vw, #0000 80vw),
                         repeating-linear-gradient( 70deg, #0000 45vw, #00367866 47vw, #0000 49vw, #0000 104vw),
                         repeating-linear-gradient( 10deg, #0000 45vw, #00367866 47vw, #0000 49vw, #0000 90vw);
 
 }
+
+.hidd
+{
+	visibility:hidden
+}
+
+a
+{
+  font-weight: bold;
+  color: #eee;
+}
+a:hover
+{
+  color: #ddf;
+
+}
+
 li
 {
     margin-bottom:1em;
 }
-.myGlower 
+.myGlower
 {
-  /*  color:#fef0ba; 
-    background-color: #5a5353;
-    border-radius: 5px;
-    border: 1px solid;    
-    border-color: orange;
-    -webkit-transition: border 1s ease, box-shadow 1s ease;
-       -moz-transition: border 1s ease, box-shadow 1s ease;
-            transition: border 1s ease, box-shadow 1s ease;
-
-    margin: 20px;
-    padding:30px;
-    -webkit-box-shadow: 0 0 10px orange;
-       -moz-box-shadow: 0 0 10px orange;
-            box-shadow: 0 0 10px orange;*/
-
-
-/*color: #c7ebff;*/
-color: #fdb;
-    background-color: #4a6786;
+	color: #fdb;
+    background-color: #4a0706;
     border-radius: 5px;
     border: 1px solid;
     border-color: #d5d9ff;
@@ -161,12 +232,11 @@ color: #fdb;
     background-image: repeating-linear-gradient(-30deg, #0006 25%, #00367866 27%, #0006 29%, #0006 80%),
                         linear-gradient(70deg, #0006 45%, #00367866 47%, #0006 49%),
                         repeating-linear-gradient( 10deg, #0006 45%, #00367866 47%, #0006 49%, #0006 90%);
-
 }
 
 
 
-.myGlower:hover 
+.myGlower:hover
 {
     border-color: magenta;
     /*border: 1px solid;    */
@@ -178,12 +248,6 @@ color: #fdb;
 .skinny
 {
     padding:1px;
-    /*border-top: none;*/
-    /*background-color: #0000;*/
-}
-div
-{
-    margin-bottom:6em;
 }
 
 h1
@@ -201,6 +265,7 @@ h3
     text-align: center;
     font-size: 3em;
     margin-bottom: 0.8em;
+	margin-top: 2em;
 }
 h4
 {
@@ -246,314 +311,205 @@ h6
 
 img
 {
-        width: 95%;
-        display: block;
-        border-radius: 15px;
-        border: 1px solid white;
-        margin:auto;
+	width: 95%;
+	display: block;
+	border-radius: 15px;
+	margin:auto;
 }
 
+input
+{
 
-    .duo, .trio, .quad
-    {
-        display:grid;
-    }
-    .duo > div, .trio > div, .quad > div
-    {
-        padding:1em;
-    }
-    .duo
-    {
-        grid-template-columns: 1fr 1fr;
-    }
-    .trio
-    {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-    .quad
-    {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
+}
+button
+{
+	background-color: #4C50AF;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 1em;
+}
 
-    /*
-    @media screen and (max-width: 1200px) 
-    {
-        .trio
-        {
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-    }*/
-    @media screen and (max-width: 700px) 
-    {
-        .trio, .quad
-        {
-            grid-template-columns: 1fr;
-        }
-
-        .reordertop, .reordermid
-        {
-            order:0;
-        }
-    }
-    @media screen and (max-width: 900px) 
-    {
-        .duo
-        {
-            grid-template-columns: 1fr;
-        }
-    }
 </style>
-<!--
-.words
-{
-    /*border:1px;*/
-    padding:1em 2em;
-    display:inline-block;
-    background-color: lightblue;
-    /*margin-top: -0.5em;*/
-    /*margin-right:auto;*/
-    margin-left:5px;
-    /*color:white;*/
-    -webkit-box-shadow: 0 0 10px grey;
-       -moz-box-shadow: 0 0 10px grey;
-            box-shadow: 0 0 10px grey;
-    font-weight: bold;
-    font-style: italic;
-    /*font-family: 'bookman old style';*/
-    font-family: 'Palatino';
-    font-size: 1.2em;
-}
-.words:nth-child(2n)
-{
-    /*float:right;*/
-    /*margin-left:auto;*/
-    margin-right:0px;
-    float:left;
-    margin-left:15px;
-    border-radius: 10px;
-    /*margin-right: -2em;*/
-    /*margin-left: 4em;*/
-    background-color: lightblue;
-
-    -ms-transform:      rotate(2deg); /* IE 9 */
-    -webkit-transform:  rotate(2deg); /* Safari */
-    transform:          rotate(2deg);
-}
-.words:nth-child(3n-1)
-{
-    float:right;
-    clear:left;
-    /*margin-left:auto;*/
-    margin-right:10px;
-    /*margin-right: -2em;*/
-    /*margin-left: 4em;*/
-    background-color: pink;
-    margin-left:30px;
-    /*border-radius: 40px;*/
-
-    -ms-transform:      rotate(-2deg); /* IE 9 */
-    -webkit-transform:  rotate(-2deg); /* Safari */
-    transform:          rotate(-2deg);
-}
-.words:nth-child(40pxn+3)
-{
-    border-radius: 80px;
-}
-.words:nth-child(3n+1)
-{
-    /*float:right;*/
-    /*margin-left:auto;*/
-    margin-right:30px;
-    /*float:left;*/
-    margin-left:15px;
-    /*margin-right: -2em;*/
-    /*margin-left: 4em;*/
-    background-color: #cfe0bf;
-}
-</style>
- -->
 </head>
 
 <body>
     <canvas id="polyCanvas"></canvas>
+
 <div class=about>
 <h3>Got Problems...? Great!</h3>
 
-<div class="centerblock myGlower">
-<h5>Welcome to Polytopes.design</h5>
-<h6>Associated Engineering Consultants</h6>
+	<div class="centerblock myGlower">
+		<h5>Polytopes.design</h5>
+		<h6>First Principles Design Engineers</h6>
 
-<p/>Our engineers are looking for challenges;
-<br>problems that they can tear apart, 
-<br>attack from new perspectives,
-<br>and apply all of the tricks collected through decades of experience.
+		<p/>Our engineers are looking for challenges;
+		<br>problems that they can tear apart,
+		<br>attack from new perspectives,
+		<br>and apply all of the tricks collected through decades of experience.
 
-<p/>
-<p/>Whether your system is mechanical, electrical, logical, or mathematical; 
-<br>and you need to increase performance, profit, or precision; 
-<br>get in touch with us to describe your application.
+		<p/>
+		<p/>Whether your system is mechanical, electrical, logical, or mathematical;
+		<br>and you need to increase performance, profit, or precision;
+		<br>get in touch with us to describe your application.
 
-<p/>
-<p/>We will examine your system and environment from outside the box 
-<br>and provide you with IP that is unique and fit for purpose.
+		<p/>
+		<p/>We will examine your system and environment from outside the box
+		<br>and provide you with IP that is unique and fit for purpose.
 
-</div>
+	</div>
 </div>
 
 <div class=principlesblock>
-<h3>Our Guiding Principles</h3>
-<div class=principles>
+	<h3>Case Studies</h3>
+	<div class=sixset>
 
+		<div class=myGlower><h4>Geometry Optimisation</h4>
+			<img src="Polytopes/Mems.jpg">
+			<p />Designing micro-electro-mechanical devices requires many tradeoffs due to the constraints on packaging, manufacturing processes, and electrical connections.
+			<p />Producing a mathematical description of the stiffnesses of different geometric layouts allows an optimal format to be generated from non-intuitive designs.
+			<p />Both stroke <i>and</i> stability were maximised by massive mechanical parallelisation.
+		</div>
 
-<div class=myGlower><h4>More&nbspData... More&nbspBetter</h4>
-We understand that using all possible data intelligently; in sensor-fusion algorithms or integrated into equipment models; provides vastly better performance than naive implementations that ignore complex interactions not obvious to the designer.
+		<div class=myGlower><h4>Major Mnemonic Playing Cards</h4>
+			<img src="Polytopes/Major.jpg">
+			<p />An exercise in graphic design, utilising machine learning to create unique images for a set of playing cards.
+			<p />Each individual card had it's own theme selected, then machine learning algorithms were used to create a representation of the theme such that a common feel was maintained between cards of each suit.
+			<p />These cards were used as the basis for a Kickstarter project.
+		</div>
 
-<p />Careful design of systems to constrain inputs and remove sources of error further improves performance.
+		<div class=myGlower><h4>Steam-punk Morse Keypad</h4>
+			<img src="Polytopes/Morse.jpg">
+			<p />A simple USB based microcontroller project, implementing a human-interface-device protocol and interpreting iambic morse code.
+			<p />The device is manufactured from rose-wood and brass and acts as an ordinary USB keyboad when in use.
+			<p />The 4 touch sensitive brass contacts use capacitive sensing, and can be configured to perform special functions, as well as configurable volume, tone, and keying speed.
+		</div>
+
+		<div class=myGlower><h4>Complex Systems: Simplified</h4>
+			<img src="Polytopes/Wing.png">
+			<p />An airframe designed for simple construction, lowering fabrication costs.
+			<p />Using modern control techniques allows for stabilisation components to be removed, creating a system with the minimum part-count, reducing weight and mechanical complexity, and increasing efficiency.
+		</div>
+
+		<div class=myGlower><h4>Bias Modulations</h4>
+			<img src="Polytopes/Modulation.jpg">
+			<p />A long-standing problem for inertial measurements, biases introduce compounding errors in accelerometers and gyroscopes.
+			<p />Borrowing modulation techniques from electronics to use in a mechanical system allows inherent biases to be measured, rather than estimated, for improved inertial performance.
+		</div>
+
+		<div class=myGlower><h4>Investigation and Debugging</h4>
+			<img src="Polytopes/Fog.jpg">
+			<p />Research and development of fibre-optic sensors, requiring both system-level and in-depth knowledge of components.
+			<p />Understanding that higher-precision, lower-noise components were not a solution to systemic errors in the system allowed a redesign.
+			<p />Corrections lowered the cost, increased robustness to component tolerances, and provided faster FPGA sensor measurements.
+		</div>
+
+		<!--div class=myGlower><h4>Whipple Gear</h4>
+		</div-->
+
+		<!--div class=myGlower><h4>Thermal PC</h4>
+		</div-->
+
+	</div>
 </div>
 
-<div class=myGlower><h4>What was the question?</h4>
-Realising that some questions are better than others is key to finding the best solution to complex problems.
-
-<p />Many designs integrate assumptions made before the initiation of the project, which may not be relevant in every specific case.
-
-<p />We test all assumptions, and ask the stupid questions that actually may turn out not to be.
-</div>
-
-<div class=myGlower><h4>Simplify... Man</h4>
-When problems can be condensed to their elementary components, the preconceived restrictions on design choices can be eliminated, opening up further avenues for improvement, and often lower cost solutions.
-
-<p />Simplifying to first principles can open up a general case, which may provide the designers with centuries of research from seemingly unrelated fields which can be applied to your system.
-</div>
-
-<div class=myGlower><h4>80 : 20</h4>
-Also known as the Pareto principle, we focus on the bottlenecks in the system that are restricting performance.
-
-<p />By focusing on the big issues, large gains can be made with minimal effort, minimising development cost and time to market.
-</div>
-
-</div>
-</div>
-<div class=about>
-<div class="myGlower centerblock">
-    <h4>Clarke's Laws of Progress</h4><i>
-    <ol>
-    <li />When an elderly scientist states that something is possible, he is almost certainly right.
-    <br>When he states that something is impossible, he is very probably wrong.
-
-    <li />The only way of discovering the limits of the possible is to venture a little way past them into the impossible.
-
-    <li />Any sufficiently advanced technology is indistinguishable from magic.
-</ol>
-<p /><b>— Arthur C. Clarke</b></i>
-</div>
-</div>
 <div class=principlesblock>
-<h3>Case Studies</h3>
-<div class=principles>
+	<h3>Our Guiding Principles</h3>
+	<div class=principles>
 
 
-<div class=myGlower><h4>Steam-punk Morse Keypad</h4>
-    <img src="Polytopes/Morse.jpg">
-    <p />A simple USB based microcontroller project, implementing a human-interface-device protocol and interpreting iambic morse code.
-    <p />The device is manufactured from rose-wood and brass and acts as an ordinary USB keyboad when in use.
-    <p />The 4 touch sensitive brass contacts use capacitive sensing, and can be configured to perform special functions, as well as configurable volume, tone, and keying speed.
+		<div class=myGlower><h4>More&nbspData... More&nbspBetter</h4>
+		We understand that using all possible data intelligently; in sensor-fusion algorithms or integrated into equipment models; provides vastly better performance than naive implementations that ignore complex interactions not obvious to the designer.
+
+		<p />Careful design of systems to constrain inputs and remove sources of error further improves performance.
+		</div>
+
+		<div class=myGlower><h4>What was the question?</h4>
+		Realising that some questions are better than others is key to finding the best solution to complex problems.
+
+		<p />Many designs integrate assumptions made before the initiation of the project, which may not be relevant in every specific case.
+
+		<p />We test all assumptions, and ask the stupid questions that actually may turn out not to be.
+		</div>
+
+		<div class=myGlower><h4>Simplify!</h4>
+		When problems can be condensed to their elementary components, the preconceived restrictions on design choices can be eliminated, opening up further avenues for improvement, and often lower cost solutions.
+
+		<p />Simplifying to first principles can open up a general case, which may provide the designers with centuries of research from seemingly unrelated fields which can be applied to your system.
+		</div>
+
+		<div class=myGlower><h4>80 : 20</h4>
+		Also known as the Pareto principle, we focus on the bottlenecks in the system that are restricting performance.
+
+		<p />By focusing on the big issues, large gains can be made with minimal effort, minimising development cost and time to market.
+		</div>
+
+	</div>
 </div>
 
-<div class=myGlower><h4>Major Mnemonic Playing Cards</h4>
-    <img src="Polytopes/Major.jpg">
-<p />An exercise in graphic design, utilising machine learning to create unique images for a set of playing cards.
-<p />Each individual card had it's own theme selected, then machine learning algorithms were used to create a representation of the theme such that a common feel was maintained between cards of each suit.
-<p />These cards were used as the basis for a Kickstarter project.
+
+<!--div class=about>
+	<div class="myGlower centerblock">
+		<h4>Clarke's Laws of Progress</h4><i>
+		<ol>
+			<li />When an elderly scientist states that something is possible, he is almost certainly right.
+			<br>When he states that something is impossible, he is very probably wrong.
+
+			<li />The only way of discovering the limits of the possible is to venture a little way past them into the impossible.
+
+			<li />Any sufficiently advanced technology is indistinguishable from magic.
+		</ol>
+	<p /><b>— Arthur C. Clarke</b></i>
+	</div>
+</div-->
+
+
+<h3>Let's Chat</h3>
+	<div class="centerblock myGlower">
+		<p/>Fill in the form below, or send an email to <a href="mailto:engineer@polytopes.design">engineer@polytopes.design</a> to get in touch with an engineer to describe your project and discuss ways to enhance your designs.
+
+		<div class=duo>
+			<form name="contactForm" id="contactForm" method="post" action="">
+
+				<label for="contactFname">Name <span class="required">*</span></label>
+					<input name="contactFname" id="contactFname" placeholder="Name" value="" type="text">
+
+				<label for="contactEmail">Email <span class="required">*</span></label>
+					<input name="contactEmail" id="contactEmail" placeholder="Email" value="" type="text">
+
+				<label for="contactSubject">Subject</label>
+					<input name="contactSubject" id="contactSubject" placeholder="Subject" value="" type="text">
+
+					<label for="contactMessage">Message <span class="required">*</span></label>
+					<textarea name="contactMessage" id="contactMessage" placeholder="Your Message" rows="10"></textarea>
+
+					<button class="submit full-width">Send Message</button>
+
+					<div id="message-warning" class="hidd">
+						Sorry, an error occurred. Please try sending an email.
+					</div>
+
+					<div id="message-success" class="hidd">
+						Your message was sent, thank you!
+					</div>
+			</form>
+			<div>
+				<img src="Polytopes/engineer.jpg">
+				<b>Aaron Hammond<br>Principle Engineer</b>
+			</div>
+		</div>
+	</div>
 </div>
 
-<div class=myGlower><h4>ARW Rejection</h4>
-We understand that using all possible data intelligently; in sensor-fusion algorithms or integrated into equipment models; provides vastly better performance than naive implementations that ignore complex interactions not obvious to the designer.
 
-<p />Careful design of systems to constrain inputs and remove sources of error further improves performance.
-</div>
-
-<div class=myGlower><h4>Bias Modulations</h4>
-Realising that some questions are better than others is key to finding the best solution to complex problems.
-
-<p />Many designs integrate assumptions made before the initiation of the project, which may not be relevant in every specific case.
-
-<p />We test all assumptions, and ask the stupid questions that actually may turn out not to be.
-</div>
-
-<div class=myGlower><h4>Whipple Gear</h4>
-When problems can be condensed to their elementary components, the preconceived restrictions on design choices can be eliminated, opening up further avenues for improvement, and often lower cost solutions.
-
-<p />Simplifying to first principles can open up a general case, which may provide the designers with centuries of research from seemingly unrelated fields which can be applied to your system.
-</div>
-
-<div class=myGlower><h4>Thermal PC</h4>
-Also known as the Pareto principle, we focus on the bottlenecks in the system that are restricting performance.
-
-<p />By focusing on the big issues, large gains can be made with minimal effort, minimising development cost and time to market.
-</div>
-
-</div>
-</div>
 <h3>About Polytopes.design</h3>
 <div class="centerblock myGlower">
-<p/>At polytopes.design we like to think we add an extra dimension to thinking outside of the box.
-<p/>Our logo is an exploded view of a 24-cell, aka an icosi-tetra-choron. This object lives in 4 dimensions, and contains 24 3D solids. has hundreds of planes of symmetry, reflections between seemingly discocnnected fields.
+	<p/>At polytopes.design we like to think we add an extra dimension to thinking outside of the box.
+	<p/>Our logo is an exploded view of a 24-cell, aka an icosi-tetra-choron. This object lives in 4 dimensions, and contains 24 3D solids. has hundreds of planes of symmetry, reflections between seemingly discocnnected fields.
 </div>
 
 
-    <h3>Let's Chat</h3>
-<div class=chat>
-    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-    eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-    voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-    </p>
-    <form name="contactForm" id="contactForm" method="post" action="">
-        
-                <label for="contactFname">First Namejjjjjj <span class="required">*</span>                             </label>           
-                    <input name="contactFname" id="contactFname" placeholder="First Name" value="" type="text">     
-                <label for="contactEmail">Email <span class="required">*</span></label>                                
-                    <input name="contactEmail" id="contactEmail" placeholder="Email" value="" type="text">                          
-                <label for="contactSubject">Subject</label>                                
-                    <input name="contactSubject" id="contactSubject" placeholder="Subject" value="" type="text">                            
-
-          <div class="row">
-
-                 <label for="contactMessage">Message <span class="required">*</span></label>
-                 <textarea name="contactMessage" id="contactMessage" placeholder="Your Message" rows="10" cols="50"></textarea>
-
-          </div>
-
-          <div>
-             <button class="submit full-width">Send Message</button>
-             <div id="image-loader">
-                <img src="images/loader.gif" alt="">
-             </div>
-          </div>
-            
-    </form> 
-
-    <div id="message-warning">
-    </div>
-    <div id="message-success">
-       <i class="fa fa-check"></i>Your message was sent, thank you!<br>
-    </div>
-</div>
-<div class="other">
-
-    <div class="quad">
-        <div>
-            <h5 class="logotext">Polytopes.design</h5>
-            <img src="Polytopes/octahedron.svg">
-        </div>
-        <div><h5>
-            About</h5>
-        </div>
-        <div><h5>
-            Contact</h5>
-        </div>
-        <div><h5>
-            Support</h5>
-        </div>
-    </div>
-</div>
 </body></html>
