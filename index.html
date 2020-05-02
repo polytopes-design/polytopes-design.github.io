@@ -472,19 +472,19 @@ button
 		<p/>Fill in the form below, or send an email to <a href="mailto:engineer@polytopes.design">engineer@polytopes.design</a> to get in touch with an engineer to describe your project and discuss ways to enhance your designs.
 
 		<div class=duo>
-			<form name="contactForm" id="contactForm" method="post" action="">
+			<form name="contactForm" id="contactForm" method="post" action="http://formspree.io/engineer@polytopes.design">
 
 				<label for="contactFname">Name <span class="required">*</span></label>
-					<input name="contactFname" id="contactFname" placeholder="Name" value="" type="text">
+					<input name="contactFname" id="contactFname" required placeholder="Name" value="" type="text">
 
 				<label for="contactEmail">Email <span class="required">*</span></label>
-					<input name="contactEmail" id="contactEmail" placeholder="Email" value="" type="text">
+					<input name="contactEmail" id="contactEmail" required placeholder="Email" value="" type="email">
 
 				<label for="contactSubject">Subject</label>
 					<input name="contactSubject" id="contactSubject" placeholder="Subject" value="" type="text">
 
 					<label for="contactMessage">Message <span class="required">*</span></label>
-					<textarea name="contactMessage" id="contactMessage" placeholder="Your Message" rows="10"></textarea>
+					<textarea name="contactMessage" id="contactMessage" required placeholder="Your Message" rows="10"></textarea>
 
 					<button class="submit full-width">Send Message</button>
 
