@@ -7,6 +7,14 @@ body
 {
 	font:18px/26px "Inter","Open Sans","Roboto",Helvetica,sans-serif;
 }
+.namer
+{
+	grid-area: name;
+}
+.words
+{
+	grid-area:words;
+}
 h1
 {
 	background: #0b90dfc1;
@@ -39,7 +47,8 @@ ul
 .slant
 {
     display:grid;
-    grid-template-columns: 1.5fr 2.5fr 0.5fr;
+    grid-template-columns: 0.5fr 1fr 2.5fr 0.5fr;
+    grid-template-areas: "na name words nab";
 	vertical-align: top;
 	background-size: cover;
 	margin-bottom:0.5em;
@@ -108,39 +117,39 @@ ul
 
 
 <div class="science slant">
-	<div>
+	<div class="namer">
 		<h1> Science</h1>
 	</div>
-	<ul>
+	<ul class="words">
 	   	<li /> Greatly increase funding for scientific and medical research.
 	    <li />Support invention, innovation and technological development.
 	</ul>
 </div>
 
 <div class="education slant ">
-	<div>
+	<div class="namer">
 		<h1> Education</h1>
 	</div>
-	<ul>
+	<ul class="words">
     	<li />Support public education and needs-based funding.
     	<li />Return universities to the status of education and research institutions, rather than business ventures.
 	</ul>
 </div>
 
 <div class="health slant ">
-	<div>
+	<div class="namer">
 		<h1>Health</h1>
 	</div>
-	<ul>
+	<ul class="words">
     	<li />Full support for Medicare and the public health system, with a focus on reducing preventable disease and improving mental health.
 	</ul>
 </div>
 
 <div class="environment slant ">
-	<div>
+	<div class="namer">
 		<h1>Environment</h1>
 	</div>
-	<ul>
+	<ul class="words">
     	<li />Pursue net zero emissions by 2040.
 	    <li />Embrace carbon reducing industries and technologies, and innovative recycling programs.
 	    <li />Preserve our natural resources: water, agricultural land, and native forests.
@@ -150,10 +159,10 @@ ul
 </div>
 
 <div class="economy slant ">
-	<div>
+	<div class="namer">
 		<h1>Economy</h1>
 	</div>
-	<ul>
+	<ul class="words">
     	<li />Pursue an equitable tax and welfare system focused on income security and closing tax loopholes.
 	    <li />Promote competition and free enterprise to grow a better future for all.
 	    <li />Upgrade the national broadband network to world-class connection speeds.
@@ -163,10 +172,10 @@ ul
 </div>
 
 <div class="Society slant ">
-	<div>
+	<div class="namer">
 		<h1>Society</h1>
 	</div>
-	<ul>
+	<ul class="words">
     	<li />Recognise culture and art as fundamental parts of life.
     	<li />Improve urban planning to ensure access to services and culture with less environmental impact
 
@@ -174,10 +183,10 @@ ul
 </div>
 
 <div class="Government slant ">
-	<div>
+	<div class="namer">
 		<h1>Government</h1>
 	</div>
-	<ul>
+	<ul class="words">
     	<li />Open, accountable and transparent government.
 	    <li />Establish a federal anti-corruption watchdog
 	    <li />Modernise the Australian constitution to establish a republic) and recognise this continent's original inhabitants.
@@ -187,10 +196,10 @@ ul
 </div>
 
 <div class="Freedoms slant ">
-	<div>
+	<div class="namer">
 		<h1>Freedoms</h1>
 	</div>
-	<ul>
+	<ul class="words">
     	<li />Establish a charter of rights.
 	    <li />Legalise euthanasia within a well-regulated scheme.
 	    <li />Decriminalise drug use to minimise harm and review drug legality.
