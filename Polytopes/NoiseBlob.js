@@ -193,14 +193,15 @@ NoiseBlob.prototype.init_shader = function()
     this.shdr_pop_points_out.uniforms.  tex_sprite = {value: this.tex_sprite};
     this.shdr_pop_wire_out.uniforms.    tex_sprite = {value: this.tex_sprite};
     
-    this.shdr_points.           blending = THREE.AdditiveBlending;
-    this.shdr_poly.             blending = THREE.AdditiveBlending;
-    this.shdr_poly2.            blending = THREE.AdditiveBlending;
-    this.shdr_wire.             blending = THREE.AdditiveBlending;
-    this.shdr_pop_points.       blending = THREE.AdditiveBlending;
-    this.shdr_pop_wire.         blending = THREE.AdditiveBlending;
-    this.shdr_pop_points_out.   blending = THREE.AdditiveBlending;
-    this.shdr_pop_wire_out.     blending = THREE.AdditiveBlending;
+    var blendType = THREE.MultiplicativeBlending;
+    this.shdr_points.           blending = blendType;
+    this.shdr_poly.             blending = blendType;
+    this.shdr_poly2.            blending = blendType;
+    this.shdr_wire.             blending = blendType;
+    this.shdr_pop_points.       blending = blendType;
+    this.shdr_pop_wire.         blending = blendType;
+    this.shdr_pop_points_out.   blending = blendType;
+    this.shdr_pop_wire_out.     blending = blendType;
     
     this.shdr_poly.             transparent = true;
     this.shdr_poly2.            transparent = true;
@@ -306,7 +307,7 @@ self    = this;
         } );
         geometry.center();
         self.textmesh           = new THREE.Mesh(geometry,  shad);//create the meshes etc, and connect a shader, which does the coloing
-        sce.add(self.textmesh);
+        // sce.add(self.textmesh);
         self.textmesh.position.set(0,0,-30);
     } );
 
@@ -572,8 +573,8 @@ self    = this;
         {
          
         var Poly2 = new THREE.Geometry();
-        subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,S,-D), 4);
-        subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,-S,-D), 4);
+        // subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,S,-D), 4);
+        // subdiv(Poly2.vertices,   Poly2.faces, new THREE.Vector3(-S,0,-D), new THREE.Vector3(S,0,-D), new THREE.Vector3(0,-S,-D), 4);
 
         var polyLine = new THREE.Mesh(Poly2, shadwire);
         sce.add(polyLine);

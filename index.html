@@ -25,19 +25,30 @@
 <script type="text/javascript" src="Polytopes/ThreePBR.js"></script>
 <script type="text/javascript" src="Polytopes/ThreePointLight.js"></script>
 <script type="text/javascript" src="Polytopes/DeviceChecker.js"></script>
-<!--shaders-->
+
 <script type="text/javascript" src="Polytopes/blob_002.js"></script>
 <script type="text/javascript" src="Polytopes/blob.js"></script>
 <script type="text/javascript" src="Polytopes/skybox.js"></script>
 <script type="text/javascript" src="Polytopes/skybox_002.js"></script>
-<!--objects-->
+
 <script type="text/javascript" src="Polytopes/TypoGraphica_Regular.js"></script>
 <script type="text/javascript" src="Polytopes/NoiseBlob.js"></script>
 <script type="text/javascript" src="Polytopes/Ctrl.js"></script>
-<!--main-->
-<script type="text/javascript" src="Polytopes/script.js"></script>
 
+<script type="text/javascript" src="Polytopes/script.js"></script>
 <style>
+
+:root 
+{
+  --laser: #2236aa11;
+  --whiteish: #fff9;
+  --neonGreen: rgba(52, 210, 147, 0.9);
+  --solidNeonGreen: rgba(52, 210, 147, 1);
+
+  --blueTint: #008dffaa;
+  --solidlueTint: #55b3ff;
+}
+
 
 form
 {
@@ -95,12 +106,15 @@ form *
 
 body
 {
- 	font-size: 1.6em;
+ 	font-size: 1.3em;
 }
 
 .duo, .trio, .quad, .sixset
 {
 	display:grid;
+	max-width: 1300px;
+	margin-left: auto;
+	margin-right: auto;
 }
 .duo > div, .trio > div, .quad > div
 {
@@ -185,32 +199,47 @@ body
         grid-template-columns: 1fr;
     }
 }
-.princidplesblock, .chdat
+.principlesblock
 {
-    background-color: #000;
-    padding-top: 1em;
-    padding-bottom: 3em;
+    background-color: #fff;
+    padding-top: 3em;
+    padding-bottom: 4em;
     background-image: linear-gradient(#000,#003678,#000);
     background-image: linear-gradient(30deg, #000 25%, #003678 27%, #000 29%);
     /*color:#fff;*/
+    background-image:   repeating-linear-gradient(-30deg, #0000 25vw, var(--laser) 27vw, #0000 29vw, #0000 80vw),
+                        repeating-linear-gradient( 70deg, #0000 45vw, var(--laser) 47vw, #0000 49vw, #0000 104vw),
+                        repeating-linear-gradient( 10deg, #0000 45vw, var(--laser) 47vw, #0000 49vw, #0000 90vw);
 }
-.abdout
+
+.chatBlock
 {
-    padding:20px;
+	color: #eee;
+    background-color: #272727;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+
+
+.problems
+{
+    padding:5em;
     overflow: auto;
     /*padding-bottom: 3em;*/
     text-align: center;
-    background-color: #004fa9;
-    /*color: white;*/
+    background-color: var(--blueTint);
+    color: white;
     /*font-size: larger;*/
-    background-image: linear-gradient(#000,#003678,#000);
-    background-image: linear-gradient(130deg, #325068 45%, #3d5179 47%);
-    background-image: linear-gradient(130deg, #000 45%, #003678 47%, #000 49%);
+    /*background-image: linear-gradient(#000,#003678,#000);*/
+    /*background-image: linear-gradient(130deg, #325068 45%, #3d5179 47%);*/
+    /*background-image: linear-gradient(130deg, #000 45%, #003678 47%, #000 49%);*/
 }
-.about p
+.problems p
 {
     font-size: 1.2em;
 }
+
 div
 {
     margin:0px;
@@ -223,16 +252,21 @@ canvas
        -moz-box-shadow: 0 0 50px black;
             box-shadow: 0 0 50px black;
 }
+
 body
 {
-    background:#000;
-    color: #fc8;
+    background:#fff;
+    color: #222;
     margin:0px;
     font-family: 'sans';
-    background-image:   repeating-linear-gradient(-30deg, #0000 25vw, #00367866 27vw, #0000 29vw, #0000 80vw),
-                        repeating-linear-gradient( 70deg, #0000 45vw, #00367866 47vw, #0000 49vw, #0000 104vw),
-                        repeating-linear-gradient( 10deg, #0000 45vw, #00367866 47vw, #0000 49vw, #0000 90vw);
-
+    background-image:   repeating-linear-gradient(-30deg, #0000 25vw, var(--laser) 27vw, #0000 29vw, #0000 80vw),
+                        repeating-linear-gradient( 70deg, #0000 45vw, var(--laser) 47vw, #0000 49vw, #0000 104vw),
+                        repeating-linear-gradient( 10deg, #0000 45vw, var(--laser) 47vw, #0000 49vw, #0000 90vw);
+    background-image: url("Polytopes/polytope2.png");
+    background-attachment:fixed; 
+    background-position: center top;
+    background-repeat: no-repeat;
+	background-size:  contain;
 }
 
 .hidd
@@ -243,7 +277,7 @@ body
 a
 {
   font-weight: bold;
-  color: #eee;
+  color: #000088;
 }
 a:hover
 {
@@ -255,27 +289,49 @@ li
 {
     margin-bottom:1em;
 }
+
 .myGlower
 {
-	color: #fdb;
-    background-color: #4a0706;
+	/*color: #fdb;*/
+	color: #222;
+    /*background-color: #4a0706;*/
     border-radius: 5px;
     border: 1px solid;
-    border-color: #d5d9ff;
-    -webkit-transition: border 1s ease, box-shadow 1s ease;
-    -moz-transition: border 1s ease, box-shadow 1s ease;
-    transition: border 1s ease, box-shadow 1s ease;
+    border-color: var(--blueTint);
+    -webkit-transition: border .251s ease, box-shadow .251s ease;
+    -moz-transition: 	border .251s ease, box-shadow .251s ease;
+    transition: 		border .251s ease, box-shadow .251s ease;
     /*width: 100%;*/
     margin: 20px;
     padding: 30px;
     -webkit-box-shadow: 0 0 10px orange;
-    -moz-box-shadow: 0 0 10px orange;
-    box-shadow: 0 0 20px #008dff;
-    background-image: linear-gradient(130deg, #325068 45%, #3d5179 47%);
-    background-image: linear-gradient(30deg, #000 25%, #003678 27%, #000 29%);
-    background-image: repeating-linear-gradient(-30deg, #0006 25%, #00367866 27%, #0006 29%, #0006 80%),
-                        linear-gradient(70deg, #0006 45%, #00367866 47%, #0006 49%),
-                        repeating-linear-gradient( 10deg, #0006 45%, #00367866 47%, #0006 49%, #0006 90%);
+    -moz-box-shadow: 	0 0 10px orange;
+    box-shadow: 		0 0 20px var(--blueTint);
+    background-image:	repeating-linear-gradient(	-30deg, var(--whiteish) 25%, var(--laser) 27%, var(--whiteish) 29%, var(--whiteish) 80%),
+                        linear-gradient( 			 70deg, var(--whiteish) 45%, var(--laser) 47%, var(--whiteish) 49%),
+                        repeating-linear-gradient( 	 10deg, var(--whiteish) 45%, var(--laser) 47%, var(--whiteish) 49%, var(--whiteish) 90%);
+}
+
+.myBox
+{
+	/*color: #fdb;*/
+	color: #222;
+    /*background-color: #4a0706;*/
+    border-radius: 5px;
+    border: 1px solid;
+    /*border-color: var(--blueTint);*/
+    /*-webkit-transition: border .251s ease, box-shadow .251s ease;*/
+    /*-moz-transition: 	border .251s ease, box-shadow .251s ease;*/
+    /*transition: 		border .251s ease, box-shadow .251s ease;*/
+    /*width: 100%;*/
+    margin: 20px;
+    padding: 30px;
+    /*-webkit-box-shadow: 0 0 10px orange;*/
+    /*-moz-box-shadow: 	0 0 10px orange;*/
+    /*box-shadow: 		0 0 20px var(--blueTint);*/
+    background-image:	repeating-linear-gradient(	-30deg, var(--whiteish) 25%, var(--laser) 27%, var(--whiteish) 29%, var(--whiteish) 80%),
+                        linear-gradient( 			 70deg, var(--whiteish) 45%, var(--laser) 47%, var(--whiteish) 49%),
+                        repeating-linear-gradient( 	 10deg, var(--whiteish) 45%, var(--laser) 47%, var(--whiteish) 49%, var(--whiteish) 90%);
 }
 
 
@@ -309,7 +365,6 @@ h3
     text-align: center;
     font-size: 3em;
     margin-bottom: 0.8em;
-	margin-top: 2em;
 }
 h4
 {
@@ -376,20 +431,125 @@ button
 	display: inline-block;
 	font-size: 1em;
 }
+.aboutBlock
+{
+	height: 100vh;
+	/*margin-top: 22em;*/
+	/*margin-bottom: 22em;*/
+    display: flex;
+}
+.whitishBlock
+{
+    background-color: #fff9;
+}
+.aboutBox
+{
+	/*height: 100vh;*/
+	margin: auto;
+}
+.headerBox
+{
+	margin-left: 4em;
+}
+.headerBlock
+{
+	/*height: 100vh;*/
+	/*margin-top: 22em;*/
+	/*margin-bottom: 22em;*/
+    /*display: flex;*/
+    background-color: var(--solidlueTint);
+    color: white;
+    padding: 1em;
+}
+.headerBlock h3
+{
+	margin: 0;
+    text-align: left;
+}
+.headerBlock h5
+{
+	margin: 0;
+    text-align: left;
+    font-size: 1em;
+}
 
 </style>
 </head>
 
-<body>
-    <canvas id="polyCanvas"></canvas>
+<body style="position:absolute">
 
-<div class=about>
-<h3>Got Problems...? Great!</h3>
+<canvas id="polyCanvas" style="position:fixed; z-index: -1;"></canvas>
 
-	<div class="centerblock myGlower">
+<div class=headerBlock>
+	<div class=headerBox>
+		<h3>Polytopes.design</h3>
+		<h5>&nbsp;first principles engineers</h5>
+	</div>
+</div>
+
+<div class=principlesblock>
+	<h3>Case Studies</h3>
+	<div class=sixset>
+
+		<div class=myGlower><h4>Simplified Complexity</h4>
+			<img src="Polytopes/Complex.jpg">
+			<p />For systems with long research histories such as precise GPS positioning, entrenched heuristics and mindsets prevent modernisation and optimisation of systems.
+			<p />By abstracting the components of the system back to pure mathematics and physics, distracting peculiarities of the application are avoided, and new techniques enabled.
+			<p /><a href="Polytopes/Papers/LazyMansAR.pdf">A Lazy Mans Approach to GNSS Ambiguity Resolution and Repair, 2021</a>
+		</div>
+
+		<div class=myGlower><h4>Bias Modulation</h4>
+			<img src="Polytopes/Modulation.jpg">
+			<p />A long-standing problem for inertial measurements, biases introduce compounding errors in accelerometers and gyroscopes.
+			<p />Borrowing modulation techniques from electronics to use in a mechanical system allows inherent biases to be measured, rather than estimated, for improved inertial performance.
+			<p /><a href="Polytopes/Papers/BiasModulation.pdf">Elimination of Inertial Sensor Biases by Mechanical Modulation, 2019</a>
+		</div>
+
+		<div class=myGlower><h4>Geometry Optimisation</h4>
+			<img src="Polytopes/Mems.jpg">
+			<p />Designing micro-electro-mechanical devices requires many tradeoffs due to the constraints on packaging, manufacturing processes, and electrical connections.
+			<p />Producing a mathematical description of the stiffnesses of different geometric layouts allows an optimal format to be generated from non-intuitive designs.
+			<p />Both stroke <i>and</i> stability were maximised by massive mechanical parallelisation.
+			<p /><a href="Polytopes/Papers/Mems.pdf">A 2-DOF Electrostatically Actuated MEMS Nanopositioner for On-Chip AFM, 2021</a>
+		</div>
+
+		<div class=myGlower><h4>Investigation + Debugging</h4>
+			<img src="Polytopes/Fog.jpg">
+			<p />Research and development of fibre-optic sensors, requiring both system-level and in-depth knowledge of components.
+			<p />Understanding that higher-precision, lower-noise components were not a solution to systemic errors in the system allowed a redesign.
+			<p />Corrections lowered the cost, increased robustness to component tolerances, and provided faster FPGA sensor measurements.
+		</div>
+
+		<div class=myGlower><h4>Machine Generated Art</h4>
+			<img src="Polytopes/Major.jpg">
+			<p />An exercise in graphic design, utilising machine learning to create unique images for a set of playing cards.
+			<p />Each individual card had it's own theme selected, then machine learning algorithms were used to create a representation of the theme such that a common feel was maintained between cards of each suit.
+			<!-- <p />These cards were used as the basis for a Kickstarter project. -->
+		</div>
+
+		<div class=myGlower><h4>Steam-punk Morse Keyer</h4>
+			<img src="Polytopes/Morse.jpg">
+			<p />A simple USB based microcontroller project, implementing a human-interface-device protocol and interpreting iambic morse code.
+			<p />The device is manufactured from rose-wood and brass and acts as an ordinary USB keyboad when in use.
+			<p />The 4 touch sensitive brass contacts use capacitive sensing, and can be configured to perform special functions, as well as configurable volume, tone, and keying speed.
+		</div>
+
+		<!--div class=myGlower><h4>Whipple Gear</h4>
+		</div-->
+
+		<!--div class=myGlower><h4>Thermal PC</h4>
+		</div-->
+
+	</div>
+</div>
+
+<div class=problems>
+
+	<div class="centerblock myGlofwer">
+		<h3>Got Problems...? Great!</h3>
 		<h5>Polytopes.design</h5>
 		<h6>First-principles Design Engineers</h6>
-
+<!--
 		<p/>Our engineers are looking for challenges;
 		<br>problems that they can tear apart,
 		<br>attack from new perspectives,
@@ -402,68 +562,7 @@ button
 
 		<p/>
 		<p/>We will examine your system and environment from outside the box and provide you with IP that is unique and fit for purpose.
-
-	</div>
-</div>
-
-<div class=about>
-	<div class="centerblock myGlower">
-		<h4>Covid Update</h4>
-		<p/>We will be halting operations while Australia is under lockdown due to the Covid19 crisis.
-		<p/>We'll take this time to develop prototyping capability for after the peak of the crisis has passed.
-	</div>
-</div>
-
-<div class=principlesblock>
-	<h3>Case Studies</h3>
-	<div class=sixset>
-
-		<div class=myGlower><h4>Geometry Optimisation</h4>
-			<img src="Polytopes/Mems.jpg">
-			<p />Designing micro-electro-mechanical devices requires many tradeoffs due to the constraints on packaging, manufacturing processes, and electrical connections.
-			<p />Producing a mathematical description of the stiffnesses of different geometric layouts allows an optimal format to be generated from non-intuitive designs.
-			<p />Both stroke <i>and</i> stability were maximised by massive mechanical parallelisation.
-		</div>
-
-		<div class=myGlower><h4>Major Mnemonic Playing Cards</h4>
-			<img src="Polytopes/Major.jpg">
-			<p />An exercise in graphic design, utilising machine learning to create unique images for a set of playing cards.
-			<p />Each individual card had it's own theme selected, then machine learning algorithms were used to create a representation of the theme such that a common feel was maintained between cards of each suit.
-			<p />These cards were used as the basis for a Kickstarter project.
-		</div>
-
-		<div class=myGlower><h4>Steam-punk Morse Keypad</h4>
-			<img src="Polytopes/Morse.jpg">
-			<p />A simple USB based microcontroller project, implementing a human-interface-device protocol and interpreting iambic morse code.
-			<p />The device is manufactured from rose-wood and brass and acts as an ordinary USB keyboad when in use.
-			<p />The 4 touch sensitive brass contacts use capacitive sensing, and can be configured to perform special functions, as well as configurable volume, tone, and keying speed.
-		</div>
-
-		<div class=myGlower><h4>Complex Systems: Simplified</h4>
-			<img src="Polytopes/Wing.png">
-			<p />An airframe designed for simple construction, lowering fabrication costs.
-			<p />Using modern control techniques allows for stabilisation components to be removed, creating a system with the minimum part-count, reducing weight and mechanical complexity, and increasing efficiency.
-		</div>
-
-		<div class=myGlower><h4>Bias Modulations</h4>
-			<img src="Polytopes/Modulation.jpg">
-			<p />A long-standing problem for inertial measurements, biases introduce compounding errors in accelerometers and gyroscopes.
-			<p />Borrowing modulation techniques from electronics to use in a mechanical system allows inherent biases to be measured, rather than estimated, for improved inertial performance.
-		</div>
-
-		<div class=myGlower><h4>Investigation and Debugging</h4>
-			<img src="Polytopes/Fog.jpg">
-			<p />Research and development of fibre-optic sensors, requiring both system-level and in-depth knowledge of components.
-			<p />Understanding that higher-precision, lower-noise components were not a solution to systemic errors in the system allowed a redesign.
-			<p />Corrections lowered the cost, increased robustness to component tolerances, and provided faster FPGA sensor measurements.
-		</div>
-
-		<!--div class=myGlower><h4>Whipple Gear</h4>
-		</div-->
-
-		<!--div class=myGlower><h4>Thermal PC</h4>
-		</div-->
-
+-->
 	</div>
 </div>
 
@@ -518,6 +617,7 @@ button
 </div-->
 
 
+<div class=chatBlock>
 <h3>Let's Chat</h3>
 	<div class="centerblock myGlower">
 		<p/>Fill in the form below, or send an email to <a href="mailto:engineer@polytopes.design">engineer@polytopes.design</a> to get in touch with an engineer to describe your project and discuss ways to enhance your designs.
@@ -546,13 +646,18 @@ button
 		</div>
 	</div>
 </div>
-
-
-<h3>About Polytopes.design</h3>
-<div class="centerblock myGlower">
-	<p/>At polytopes.design we like to think we add an extra dimension to thinking outside of the box.
-	<p/>Our logo is an exploded view of a 24-cell, aka an icosi-tetra-choron. This object lives in 4 dimensions, and contains 24 3D solids. has hundreds of planes of symmetry, reflections between seemingly disconnected fields.
 </div>
 
-<pre><center>Australian business number (ABN) 88 739 214 240</center></pre>
+<div class="aboutBlock whitishBlock">
+<div class="centerblock myBox aboutBox">
+
+	<h3>About Polytopes.design</h3>
+	<p/>At polytopes.design we like to think we add an extra dimension to thinking outside of the box.
+	<p/>Our logo is an exploded view of a 24-cell, aka an icosi-tetra-choron.
+	<p/>This object lives in 4 dimensions and contains 24 x 3D solids. Its hundreds of planes of symmetry represent the parallels that arise between seemingly disconnected fields.
+</div>
+</div>
+<div class=whitishBlock>
+<pre style="margin: auto;"><center>Australian business number (ABN) 88 739 214 240</center></pre>
+</div>
 </body></html>

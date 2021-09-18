@@ -55,6 +55,7 @@ ThreeSharedRenderer.prototype.init_renderer = function()
 
     this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize( this.w, this.h );
+    this.renderer.setClearColor(0xffffff, 1);
     
     this.renderer.autoClear = false;
     this.renderer.shadowMap.enabled = true;
