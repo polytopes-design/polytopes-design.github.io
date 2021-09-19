@@ -1,0 +1,386 @@
+Hey anthony,
+Id be happy to help out with the paper.
+How well written would you like it to be?
+What info would you like in there? I basically just designed something that i was pretty sure would work, and with minimum crappy resonances etc. I could go slightly into how i decided the layout to stiffen/ soften the device in different directions/axes. I could get theoretical resonances from the basic design characteristics??? I dont think coventor let me do a full FEA of the resonances due to the complexity, but perhaps yuen could help with that, (or have you already done this).
+Anything else that you think i did that perhaps ive forgotten about?
+
+Aaron Hammond
+Anthony N. Laskovski <alasko@ieee.org>
+	
+19 Aug 2011, 11:36
+	
+to me
+Hey Aaron, 
+
+In terms of the type of information to cover, I think a detailed design description would be great, as it would hilight all of the detailed features you implemented and why they were employed. Perhaps it would also be a good idea to show the parts of this design that are new, or more well-thought out than previous positioners published in literature.
+
+In terms of calculations or simulations, any information that you have that support the design would be a positive for the paper. I'll have a chat to Yuen and Anthony F about FEA simulations.
+
+:)
+Anthony
+
+-- 
+Kind Regards,
+Anthony N. Laskovski
+www.laskovski.com/anthony.html
+
+...
+
+[Message clipped]  View entire message
+Aaron Hammond <aaron.c.hammond@gmail.com>
+	
+8 Sept 2011, 01:17
+	
+to Anthony
+Anthony.
+Ive got a bit of text that should help with the publication, ill tidy it and add more on the weekend.
+Have you tested the positioner for cross coupling effects? When I designed it i was confident that there wouldn't be any except for those caused by machining imperfections, but ive just realised that thats only true for steady state. There's at least one type of cross coupling that I can imagine will occur at higher frequencies, which if do occur could be explained and modelled, and designed out if another revision of the device is made.
+
+Aaron Hammond
+...
+
+[Message clipped]  View entire message
+Anthony N. Laskovski <alasko@ieee.org>
+	
+8 Sept 2011, 15:39
+	
+to me
+Hi Aaron, 
+
+Ok cool :) I haven't tested the positioner for cross coupling effects, though I noticed that there is very little cross coupling at lower frequencies, assuming that the terminals of the non-actuating axis are grounded together. I am going to have a look at the frequency response using a simultaneous sensing/actuating circuit either tomorrow or next week. Reza is pretty keen for us to submit an abstract based on this paper for the MEMS conference next tuesday 12th Sep. Ill get a draft abstract started now, and incorporate your info when you send it though.
+
+Anthony
+...
+
+[Message clipped]  View entire message
+Aaron Hammond <aaron.c.hammond@gmail.com>
+	
+12 Sept 2011, 11:35
+	
+to Anthony
+Hi Anthony,
+This isnt complete, but I guess you could pull relevant bits out for the abstract if that's all that is required tomorrow.
+The equations in here are not completely correct im sure, so dont use them till i check them.
+Im trying to write the formula for the rotational resonance, but its fairly complex. The major terms are there, but there is an additional term that will take a bit of coaxing to get to work. The last one is very small for small angles so I would usually neglect it, but Im not sure if thats ok in proper publications.
+
+Any questions, just give me a buzz.
+
+Aaron Hammond
+
+
+A MEMS based parallel kinematics nanopositioner has been fabricated using the SOIMumps process.
+The nanopositioner is designed such that the position of the stage can be estimated from the input voltage with a high degree of confidence,
+The layout of components has been designed such that unwanted resonance modes are shifted to frequencies far from the operating frequencies.
+The nanopositioner takes the same functional layout as the one designed by yong et al. (Could probably steal a chunk of the reasoning behind this layout from his paper)
+The design consists of a central positioning stage, actuating combs, connecting springs, and the substrate base.
+Two actuating combs are found at the edges of the device for actuating the device in the x and y directions. These are connected to the substrate with beam springs that are oriented perpendicular to the direction of actuator movement.
+The central positioning stage is connected to the actuating combs using beam springs which are oriented parallel to the direction of actuation of the comb.
+
+For accurate positioning of the actuated stage, it is desirable to have a high stiffness in the out of plane (Z) direction. The stiffness of the device in the x and y planes is chosen such that the displacement due to the maximum applied voltage is equal to the desired stroke of the nanopositioner.
+To prevent rotational oscillations of the stage within the plane, a high degree of torsional rigidity is required about the Z axis.
+
+The stiffnesses of an object in the x, y, and directions when suspended using a multiplicity of beam springs as shown in figure 1 is expressed in equations 1,2,3.
+1:    k_x = n*w*h/L
+2:    k_y = n*w^2*h/L        (aaron, is this L^2?)
+3:    k_z = n*w*h*2/L        (aaron, is this L^2?)
+
+For a design that maximises the ratio of k_x to k_y and k_z to k_y, the width of the beams should be minimised:
+4:    Rxy = k_x/k_y = 1/w
+5:    Rzy = k_z/k_z = h/w
+
+Earlier nanopositioner stage implementations have suffered from low tortional rigidity in both the actuating combs and the positioning stage.
+The tortional spring constant of the object depicted in figure 1 is expressed in equations 6,7.
+6:                (aaron, I have no idea)
+7:                (aaron, blind dear with no legs)
+
+In order to shift the resonance modes caused by rotational oscillations within the plane to high frequencies, the tortional rigidity is increased by placing the beams suspending the stage as far as possible to the edges. Note that here also it is desirable to have a large number of beams with small widths for a given stiffness in the direction of actuation.
+
+
+By using a layout that uses many thin beam flexures, the stability of the positioner is increased, with the designed device achieving spring constants of:
+k_x =
+k_y =
+k_z =
+k_theta1 =
+k_phi =
+
+The 1st resonant frequencies of the positioning stage due to the application of these springs' forces on the positioner's mass can be estimated as:
+f_x
+f_y
+f_z
+f_theta
+f_phi,
+Which places the unwanted resonances at frequencies that are much higher than the desired motion, such that they wont be induced during normal operation.
+
+
+
+
+
+Notes about other things.
+
+There is a small triangle at the center of the end of the actuators (some may have fallen off because of bad processing). That is electrically floating, and is designed to act as a stop for the actuator in case of over-voltage. The actuator should slam into the bumper before the non-linearity of the actuators kicks in, and stop the two halves of the actuators from shorting out.
+
+There are arrays of holes in the sides of the positioning stage which were intended to be used for in plane measurement. The electrostatic linear stepper driver paper that I liked used a fourier based image processing technique that could resolve high accuracy measurements using just a digital scope and a periodic feature. An electrostatic 3-phase linear stepper motor... Sarijlic?
+
+Actuator arms are trapezoidal rather than rectangular in shape for mechanical reasons, Nothing new, but by tapering them more actuators could be fit into the same area. The arm is supporting a large bending moment at the base of the arm due to the force of the whole arm's fingers. At the end of the arm, only the remaining few fingers' force is acting on the arm, which is considered a rigid beam for simplicity. They really could taper off to zero at the end with a triangular shape, but I just made them trapezoidal for a little safety factor. Thinking about it now, it really should have tapered off to zero for that little bit of available area and extra stroke, cause the increase in strength is effectively zero.
+
+Some actuators ive seen used a pull-pull layout with symmetrical actuating combs. I didnt do that, cause only one of the combs can be used at a time, so a lot of space is wasted. I could have put actuators on both sides, in what im gonna call a push-pull layout, but i tried to limit the comlplexity of the device to ensure it worked. Reza didnt want me to use the minimum width for the springs, cause we were unsure if they would survive the processing, The next revision I made would have used many smaller springs, and probably symmetrical actuators.
+
+Some of the arms themselves snapped off, usually the last ones, but sometimes the others. The last ones is probably due to the reduced cross sectional area of the arm due to the notch cut out for the bumper. I was probably lucky that all of the arms didnt snap off since it seems that the dimensions were right on the structural limits. The others that snapped off were likely due to stress concentrations at the interface between the arm and the supporting structure. Any concave corners should be limited to a minimum angle of 135 degrees with a chamfer, not 90 degrees that I believe i used. Adding and making the chamfer larger will reduce the stress concentration at the base of the arm where the maximum bending moment occurs. If the arms snap, they _will_ snap at that interface, which is why the trapezoidal arm shape was redundant. If its not clear already, the chamfers that Im talking about should be larger versions of the ones at the base of each finger.
+
+When I designed this, I 'believed' that there would be very minimal cross coupling. I dont know if that is the case for the actual device. The only sources of cross coupling I can think of are from manufacturing imperfections, and the difference in masses of the spring/actuator assemblies at either side of the device. A quick movement in the y direction would cause the actuator comb and opposite spring structure to curve in ever so slightly. Since the actuator has a higher mass, it would likely tend to move less, and a small shift in that direction would be observed at high frequencies.
+...
+
+[Message clipped]  View entire message
+Anthony N. Laskovski <alasko@ieee.org>
+	
+12 Sept 2011, 13:18
+	
+to me
+Hi Aaron, 
+
+Thanks very much for the info. I'll incorporate it into the abstract and see how we go.
+
+Thanks, 
+Anthony
+...
+
+[Message clipped]  View entire message
+Anthony N. Laskovski <alasko@ieee.org>
+	
+13 Sept 2011, 15:31
+	
+to me
+Hi Aaron, 
+
+The abstract is almost done for the MEMS conference submission for 2012. I wanted to ask how you'd like us to go about authoring the papers? Basically we were thinking of preparing a journal paper with more detailed analysis, interface circuits and possibly control. I assume that this conference paper will be more focused on the design itself. Given that the focus of this coming paper is your MEMS design, shall we put you down as the main author?
+
+:)
+Anthony
+...
+
+[Message clipped]  View entire message
+Aaron Hammond <aaron.c.hammond@gmail.com>
+	
+13 Sept 2011, 16:13
+	
+to Anthony
+Anthony,
+Of course it would be nice to be the main author of a paper, so I wont say no. Im not sure how much more detail I can go into with regards to the design. I guess my main academic contribution was playing with the spring constants as I described. The rest of the design was just incorporating things that i believed would make it work, or work better for use in an AFM. I guess the paper would just be an outline of the design, and comparisons between the theoretical calcs and the actual characteristics of the device, along with a few scans and the control behind it?
+
+Aaron,
+...
+
+[Message clipped]  View entire message
+Anthony N. Laskovski <alasko@ieee.org>
+	
+15 Sept 2011, 07:39
+	
+to me
+Hi Aaron, 
+
+I uploaded an abstract based on the information you sent me. I had you as the main author. While i was listed as the uploader/submitter, I didn't receive any confirmation emails. Can you check your studentmail for any confirmation emails, and if you have them, can you send them to me? 
+
+Thanks, 
+Anthony
+...
+
+[Message clipped]  View entire message
+Aaron Hammond <aaron.c.hammond@gmail.com>
+	
+15 Sept 2011, 11:08
+	
+to Anthony
+I didnt receive anything either. Did you add my studentmail address? Staff mail address? There is another aaron.hammond that gets a lot of my mail if that's the email address that you used.
+...
+
+[Message clipped]  View entire message
+Anthony N. Laskovski <alasko@ieee.org>
+	
+15 Sept 2011, 11:10
+	
+to me
+the address i used was aaron.c.hammond@uon.edu.au, which is the one you had on the lab website. Perhaps it's in the junkmail?
+...
+
+[Message clipped]  View entire message
+Aaron Hammond <aaron.c.hammond@gmail.com>
+	
+15 Sept 2011, 11:14
+	
+to Anthony
+That should have worked, I just sent a test message to that address and its still working fine. Nothing in the junk mail folder
+...
+
+[Message clipped]  View entire message
+Anthony N. Laskovski <alasko@ieee.org>
+	
+15 Sept 2011, 11:15
+	
+to me
+ok.. i've sent the organisers an email asking if they received anything
+...
+
+[Message clipped]  View entire message
+Aaron Hammond <aaron.c.hammond@gmail.com>
+	
+19 Sept 2011, 12:09
+	
+to Anthony
+Anthony,
+Did the abstract get recieved ok? Could you send me a copy of what you submitted?
+
+Thanks
+
+Aaron
+...
+
+[Message clipped]  View entire message
+Anthony N. Laskovski <alasko@ieee.org>
+	
+Attachments19 Sept 2011, 13:54
+	
+to me
+Hi Aaron, 
+
+They haven't replied to me yet regarding the abstract. I have attached the submitted abstract to this email, as well as a pdf print of the confirmation page. At least we have that in case they claim not to have received it.
+
+Thanks, 
+Anthony
+...
+
+[Message clipped]  View entire message
+2 Attachments
+Anthony N. Laskovski <alasko@ieee.org>
+	
+4 Nov 2011, 10:09
+	
+to me
+Hi Aaron, 
+
+How's it going? We recently heard back about the abstracts for the MEMS conference, and unfortunately we didn't get through. That conference has a very low acceptance rate, and given that the abstracts were all read and decided upon in 2 days, I suspect they relied on known groups in the area. I think it's worth pursuing the journal paper with the complete analysis, and perhaps condensing that into a conference paper afterwards, focusing on your design specifically. 
+
+Cheers,
+Anthony
+-- 
+Kind Regards,
+Dr. Anthony N. Laskovski
+www.laskovski.com/anthony.html
+
+
+
+
+Hey Aaron,
+
+(The other) Anthony here. Just filling you in on some of the stuff we've been doing with your MEMS nanopositioner :)
+In addition to my MEMS energy harvesting research, Reza's recently asked me to help Anthony Laskovski with getting some experimental results and publications from your device. It's a shame the abstract you guys were working on for the IEEE MEMS conference didn't get accepted - I also had a couple of abstracts that didn't get accepted either... Always next year I guess...
+
+Anyway I've done some experiments using the nanopositioner and collected some data, see below...
+
+
+
+As you can see, these static voltage-displacement curves look pretty nice and quadratic-like. I may have been able to push the voltage a little higher, but didn't want to risk shorting out the combs. 
+
+
+I also did some frequency response measurements:
+
+
+The frequency response looks pretty good, and is well matched between axes. The first resonance is at around 816-820Hz - this compares pretty well with a finite element modal analysis I did using Coventor, which said that the first mode was at around 910Hz. There's also a second resonance at around 1600Hz.
+
+
+
+Anyway, a couple of weeks ago Reza was invited to give a presentation as an invited speaker at the ICONN 2012 conference in Perth next February. It's a nanotechnology conference, so he wanted to talk about nanopositioning and your device in particular. So Anthony L and I helped prepare a short two-page abstract for the talk, which is pretty much just the abstract you guys prepared for the IEEE conference, plus the above experimental results. The abstract is attached if you wanna take a look.  
+
+Next, the plan is to publish what we have so far as a short paper - at this stage we're looking at publishing a letter in the Journal of MEMS. This would be a 3-page paper pretty much outlining the design, explaining the above experimental characterisation results and showing the AFM scans Anthony L did previously. These letters seem to have a pretty quick turnaround, with only a few months from submission to acceptance. If you want to be involved in the writing of this paper, that would be great :)
+
+So anyway, how's Perth (you're still there right)? Your uni leave of absence ends soon doesn't it? :)
+
+Cheers,
+Anthony F
+
+
+
+
+
+
+Most of the comments of the reviewers follow, but authors should check for possible reviewer attachments as noted in the first paragraph of this e-mail.
+
+Reviewer: 1
+
+Recommendation: Publish after minor revisions
+
+Comments:
+The manuscript presents a MEMS based nano-positioner for use in atomic-force microscopes. A MEMS based, electrostatically-driven scan table can have a big impact in scanning-probe microscopy. The device offers low power consumption, potentially low cost high scan speed and wide scan range, all at once. The authors relied on standardized SOI-MUMPS technology, which is another benefit.
+
+Experimental characterization of the scanner reveals a bandwidth that is approaching 1 KHz. Although current video-rate AFMs come close to this rate, the results presented here are significant because the increased bandwidth comes with a scan range that can be as much as 15 micrometers (Video-rate AFMs provide scan ranges around 500 nm). While I support the publication of the manuscript, I recommend authors to make minor additions detailed below:
+
+(i)     Can the authors briefly mention important results obtained with state of the art video-rate AFM? For example, Toshio Ando’s group reported AFM videos of bio-molecular processes that highlight the potential value of high scan rates (movement of motor proteins and piston-like motions of the domains of the ATPase enzyme).
+
+    a.  High-Speed Atomic Force Microscopy Reveals Rotary Catalysis of Rotorless F1-ATPase, Takayuki Uchihashi, Ryota Iino, Toshio Ando, and Hiroyuki Noji. Science ( 2011) vol.333, 755-758.
+    b.  Video imaging of walking myosin V by high-speed atomic force microscopy. N. Kodera, D. Yamamoto, R. Ishikawa, T. Ando, Nature vol.468, 72 (2010).
+
+(ii)    The AFM image shows structures that are already built into the scan table. In practice, the user will need to place samples on the scan table. Can the authors comment on possible effects of the sample size and place on the frequency response of the nano-positioner? Is the MEMS scanner sturdy enough to withstand physical contact with pipettes or tweezers? This discussion could go into section IV.
+
+
+Additional Questions:
+Technical Content: A
+
+Substantiation of Results: B
+
+Innovation: B
+
+Importance to Field: A
+
+Quality of Writing: A
+
+Figures and Captions: B
+
+Overall Evaluation: A
+
+Is earlier work properly referenced? (detail in response to Editor): Yes
+
+Should material be...(detail in response to Editor): added
+
+Is the Abstract an adequate digest of the paper?: Yes
+
+Does the Introduction clearly state the background and motivation?: Yes
+
+If you feel that this paper should be published, but is more appropriate in another journal, please suggest that journal: 
+
+
+Reviewer: 2
+
+Recommendation: Publish after minor revisions
+
+Comments:
+The authors describe a comb-drive nanopositioner for AFM. Nice work on the design and fabrication, and nice figures. It is however not clear what the advantage of this system is. What does this particular nanopositioner offer or improve? How are the results supposed to be interpreted? It the only advantage the fact that it is not thermal? The references only seem to concentrate thermal positioners. How about piezo positioners?
+
+On another note, is the second resonance at 1.6 kHz or 1.792 kHz? Both are mentioned in the paper. What exactly is happening at that frequency? The authors say a nonlinearity is present. Why is there a nonlinearity? Phase seems to behave strangely at the second resonance. Is that really because of a nonlinearity or an 'unwrapping' problem with the phase?
+
+This reviewer likes the work, but more explanation is needed (particularly about the advantages that the system offers).
+
+Additional Questions:
+Technical Content: B
+
+Substantiation of Results: B
+
+Innovation: A
+
+Importance to Field: A
+
+Quality of Writing: A
+
+Figures and Captions: A
+
+Overall Evaluation: B
+
+Is earlier work properly referenced? (detail in response to Editor): No
+
+Should material be...(detail in response to Editor): added
+
+Is the Abstract an adequate digest of the paper?: Yes
+
+Does the Introduction clearly state the background and motivation?: Yes
+
+If you feel that this paper should be published, but is more appropriate in another journal, please suggest that journal:
+
+[D-1.2]
