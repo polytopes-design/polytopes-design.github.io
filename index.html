@@ -46,7 +46,8 @@
   --solidNeonGreen: rgba(52, 210, 147, 1);
 
   --blueTint: #008dffaa;
-  --solidlueTint: #55b3ff;
+  --solidBlueTint: #55b3ff;
+
 }
 
 
@@ -366,7 +367,8 @@ h3
     font-size: 3em;
     margin-bottom: 0.8em;
 }
-h4
+
+.myGlower h4
 {
     text-align: center;
     font-size: 2em;
@@ -457,7 +459,7 @@ button
 	/*margin-top: 22em;*/
 	/*margin-bottom: 22em;*/
     /*display: flex;*/
-    background-color: var(--solidlueTint);
+    background-color: var(--solidBlueTint);
     color: white;
     padding: 1em;
 }
@@ -478,6 +480,114 @@ button
 {
     font-weight: normal;
 }
+.quoteBlock 
+{ 
+  background-color: #292a2b;
+ }
+
+
+/* center the blockquote in the page */
+.blockquote-wrapper
+ {
+   display: flex;
+   padding: 0 20px;
+	max-width: 1300px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: right;
+}
+
+/* Blockquote main style */
+.blockquote 
+{
+    position: relative;
+    font-family: 'Barlow Condensed', sans-serif;
+    max-width: 620px;
+    margin: 80px auto;
+    align-self: center;
+    margin-right: 2em;
+
+}
+
+/* Blockquote header */
+.blockquote h1 
+{
+    font-family: 'Abril Fatface', cursive;
+    position: relative; /* for pseudos */
+    color: var(--solidBlueTint);
+    font-size: 2rem;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+    border: 2px solid #fff;
+    border: solid 2px var(--solidBlueTint);
+    border-radius:20px;
+    padding: 25px;
+}
+
+/* Blockquote right double quotes */
+.blockquote h1:after 
+{
+    content:"";
+    position: absolute;
+    border: 2px solid #55b3ff;
+    border-radius: 0 50px 0 0;
+    width: 60px;
+    height: 60px;
+    bottom: -62px;
+    left: 50px;
+    border-bottom: none;
+    border-left: none;
+    z-index: 3; 
+}
+
+.blockquote h1:before 
+{
+    content:"";
+    position: absolute;
+    width: 80px;
+    border: 6px solid #292a2b;
+    bottom: -3px;
+    left: 50px;
+    z-index: 2;
+}
+
+/* increase header size after 600px */
+@media all and (min-width: 600px) 
+{
+    .blockquote h1 
+    {
+        font-size: 2.5rem;
+        line-height: 1.2;
+   }
+
+}
+
+/* Blockquote subheader */
+.blockquote h4 
+{
+    position: relative;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0;
+    padding-top: 15px;
+    z-index: 1;
+    margin-left:150px;
+    padding-left:12px;
+}
+
+ 
+.blockquote h4:first-letter
+{
+  /*margin-left:-12px;*/
+}
+
+.blockquote span
+{
+	color: white; 
+}
 
 </style>
 </head>
@@ -491,6 +601,16 @@ button
 		<h3 class=nameHeader>Polytopes.<i>design</i></h3>
 		<h5><i>&nbsp;first-principles design engineers</i></h5>
 	</div>
+</div>
+
+<div class=quoteBlock>
+<div class="blockquote-wrapper quoteBlock">
+  <div class="blockquote">
+    <h1>How does a person answer <span> why</span> something happens?
+<p>The more you ask <span>'why?'</span> - the deeper it goes - the more interesting it is.</h1>
+    <h4>&mdash; Richard Feynman<br></h4>
+  </div>
+</div>
 </div>
 
 <div class=principlesblock>

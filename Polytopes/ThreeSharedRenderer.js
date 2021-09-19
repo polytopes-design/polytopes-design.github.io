@@ -20,7 +20,7 @@ if (this.h > this.w) this.h = this.w;
     window.addEventListener('resize', this.resize.bind(this), false );
 };
 
-ThreeSharedRenderer.prototype.init_ortho_matrix = function()
+ThreeSharedRenderer.prototype.init_ortho_matrix = function() 
 {
     this.ortho_matrix = new THREE.OrthographicCamera( -.5, .5, .5, -.5, 1, 10 );
     this.ortho_matrix.position.z = 5;
