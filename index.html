@@ -110,6 +110,21 @@ body
  	font-size: 1.3em;
 }
 
+@media screen and (max-width: 1600px)
+{
+    .principles
+    {
+        /*grid-template-columns: 1fr 1fr;*/
+    }
+}
+@media screen and (max-width: 1000px)
+{
+    .principles
+    {
+        /*grid-template-columns: 1fr;*/
+    }
+}
+
 .duo, .trio, .quad, .sixset
 {
 	display:grid;
@@ -117,6 +132,7 @@ body
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .duo > div, .trio > div, .quad > div
 {
 	padding:1em;
@@ -155,7 +171,8 @@ body
 }
 @media screen and (max-width: 1000px)
 {
-	.trio, .quad, .sixset
+	
+	.duo, .trio, .quad, .sixset
 	{
 		grid-template-columns: 1fr;
 	}
@@ -400,7 +417,7 @@ h6
     margin-right:auto;
     margin-top:40px;
     margin-bottom:30px;
-    line-height: 2em;
+    /*line-height: 2em;*/
     /*text-align: center;*/
 }
 .quote
@@ -412,10 +429,11 @@ h6
 
 img
 {
-	width: 95%;
+	max-width: 95%;
 	display: block;
 	border-radius: 15px;
 	margin:auto;
+	max-height: 30vh;
 }
 
 input
@@ -672,7 +690,7 @@ button
 <div class=problems>
 
 	<div class="centerblock myGlofwer">
-		<h3>Got Problems...? Great!</h3>
+		<h3>Got Problems...?<br>Great!</h3>
 		<h5 class="nameHeader">Polytopes.<i>design</i></h5>
 		<h6><i>first-principles design engineers</i></h6>
 <!--
