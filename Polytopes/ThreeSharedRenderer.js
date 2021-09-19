@@ -35,7 +35,7 @@ ThreeSharedRenderer.prototype.resize = function()
 {
     this.w = document.documentElement.clientWidth;
     this.h = document.documentElement.clientHeight;
-if (this.h > this.w) this.h = this.w;
+// if (this.h > this.w) this.h = this.w;
 
     this.matrix.aspect = this.w / this.h;
     this.matrix.updateProjectionMatrix();
