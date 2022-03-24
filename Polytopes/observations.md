@@ -1,17 +1,12 @@
-% Ginan documentation.
-% Geoscience Australia 2022
-% Content specific to this document on GNSS observation modelling.
 
-### Observation Modelling
+# Observation Modelling
 
 The Ginan toolkit is based on the concept of Precise Point Positioning (PPP).
 PPP is a high accuracy positioning method that seeks to correct errors in GNSS positioning and thus improve accuracy.
 Unlike differential GNSS techniques, which seek to measure GNSS errors using a nearby reference station, PPP is based in the robust modelling and estimation of systematic errors in the GNSS signals.
-In PPP, the GNSS measurements are modelled as normally distributed random variables with mean:\\
+In PPP, the GNSS measurements are modelled as normally distributed random variables with mean:
 
 $$
-\begin{alignat}{2} 
-\label{eq:code_UC_mea}
 E(P_{r,f}^s) 
 &= \rho_{r}^s 
 + c(dt_{r}^q - dt^s) 
@@ -20,7 +15,6 @@ E(P_{r,f}^s)
 + d_{r,f}^q
 + d_{f}^s
 \\
-\label{eq:phase_UC_mea}
 E(L_{r,f}^s) 
 &= \rho_{r}^s 
 + c(dt_{r}^q - dt^s) 
@@ -30,10 +24,11 @@ E(L_{r,f}^s)
 - b_{f}^s
 + \lambda_{f} z_{r,f}^s  
 + \phi^s_{r,f}
-\end{alignat}
+
 $$
 and a constant or elevation dependent variance.\\
 $$
+
 \sigma(P_{r,f}^s) = \sigma_0 / sin^2(\theta_{el})
 $$
 In equations \ref{eq:code_UC_mea} and \ref{eq:code_UC_var},
