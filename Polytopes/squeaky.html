@@ -7,7 +7,9 @@
 	$(document).ready(function(){
 			$("#output").load("clean.html", function(responseTxt, statusTxt, jqXHR){
 				if(statusTxt == "success"){
+					MathJax.typeset();
 				}
+				
 				if(statusTxt == "error"){
 					alert("Error: " + jqXHR.status + " " + jqXHR.statusText);
 				}
