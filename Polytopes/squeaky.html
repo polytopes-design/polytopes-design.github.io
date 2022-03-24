@@ -3,10 +3,22 @@
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 	<script>
 	$(document).ready(function(){
-			$("#output").load("clean.html", function(responseTxt, statusTxt, jqXHR){
+			$("#output1").load("clean.html", function(responseTxt, statusTxt, jqXHR){
 				if(statusTxt == "success"){
+					MathJax.typeset();
+				}
+				
+				if(statusTxt == "error"){
+					alert("Error: " + jqXHR.status + " " + jqXHR.statusText);
+				}
+			});
+
+			$("#output2").load("clean.html", function(responseTxt, statusTxt, jqXHR){
+				if(statusTxt == "success"){
+					document.getElementById('content').innerHTML = marked.parse(document.getElementById('content').innerHTML);
 					MathJax.typeset();
 				}
 				
@@ -20,7 +32,8 @@
 	<body>
 		<h1>Some</h1>
 		lorem ipsum
-		<div id="output"></div>
+		<div id="output1"></div>
+		<div id="output2></div>
     	<button type="button">Load Content</button>
 		$$\phi$$ 
 		
