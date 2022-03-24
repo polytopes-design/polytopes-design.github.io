@@ -20,7 +20,7 @@
 				page = $.urlParam('page') + ".html";
 
 
-			$("#output").load("clean.html", function(responseTxt, statusTxt, jqXHR){
+			$("#output").load(page, function(responseTxt, statusTxt, jqXHR){
 				if(statusTxt == "success"){
 					document.getElementById('output').innerHTML = marked.parse(document.getElementById('output').innerHTML);
 					MathJax.typeset();
@@ -37,7 +37,7 @@
 	<body>
 		<h1>Global page header goes here</h1>
 		Save everyone time by creating this header part - then add more stuff below:
-		
+
 		<div id="output"></div>
 		
 	</body>
