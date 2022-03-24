@@ -18,7 +18,7 @@
 
 			$("#output2").load("clean.html", function(responseTxt, statusTxt, jqXHR){
 				if(statusTxt == "success"){
-					document.getElementById('content').innerHTML = marked.parse(document.getElementById('content').innerHTML);
+					document.getElementById('output2').innerHTML = marked.parse(document.getElementById('output2').innerHTML);
 					MathJax.typeset();
 				}
 				
