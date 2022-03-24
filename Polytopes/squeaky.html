@@ -15,10 +15,9 @@
 	}
 
 	$(document).ready(function(){
-			var page = "clean.html";
+			var page = "base.md";
 			if ($.urlParam('page'))
-				page = $.urlParam('page') + ".html";
-
+				page = $.urlParam('page') + ".md";
 
 			$("#output").load(page, function(responseTxt, statusTxt, jqXHR){
 				if(statusTxt == "success"){
