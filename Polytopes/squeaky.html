@@ -5,20 +5,24 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 	<script>
-	$(document).ready(function(){
-			$("#output1").load("clean.html", function(responseTxt, statusTxt, jqXHR){
-				if(statusTxt == "success"){
-					MathJax.typeset();
-				}
-				
-				if(statusTxt == "error"){
-					alert("Error: " + jqXHR.status + " " + jqXHR.statusText);
-				}
-			});
 
-			$("#output2").load("clean.html", function(responseTxt, statusTxt, jqXHR){
+	$.urlParam = function(name){
+		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+		if (results==null) {
+			return null;
+		}
+		return decodeURI(results[1]) || 0;
+	}
+
+	$(document).ready(function(){
+			var page = "clean.html";
+			if ($.urlParam('page'))
+				page = $.urlParam('page') + ".html";
+
+
+			$("#output").load("clean.html", function(responseTxt, statusTxt, jqXHR){
 				if(statusTxt == "success"){
-					document.getElementById('output2').innerHTML = marked.parse(document.getElementById('output2').innerHTML);
+					document.getElementById('output').innerHTML = marked.parse(document.getElementById('output').innerHTML);
 					MathJax.typeset();
 				}
 				
@@ -27,15 +31,14 @@
 				}
 			});
 	});
+
 </script>
 	</head>
 	<body>
-		<h1>Some</h1>
-		lorem ipsum
-		<div id="output1"></div>
-		<div id="output2"></div>
-    	<button type="button">Load Content</button>
-		$$\phi$$ 
+		<h1>Global page header goes here</h1>
+		Save everyone time by creating this header part - then add more stuff below:
+		
+		<div id="output"></div>
 		
 	</body>
 </html>
