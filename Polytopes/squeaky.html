@@ -1,9 +1,26 @@
 <html>
-
+<head>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("button").click(function(){
+			$("#output").load("portal.html", function(responseTxt, statusTxt, jqXHR){
+				if(statusTxt == "success"){
+					alert("New content loaded successfully!");
+				}
+				if(statusTxt == "error"){
+					alert("Error: " + jqXHR.status + " " + jqXHR.statusText);
+				}
+			});
+		});
+	});
+</script>
+	</head>
 	<body>
 		<h1>Some</h1>
 		lorem ipsum
-		
+		<div id="output"></div>
+    	<button type="button">Load Content</button>
 		
 	</body>
 </html>
