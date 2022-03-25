@@ -1,3 +1,4 @@
+ 
 
 # Observation Modelling
 
@@ -6,7 +7,8 @@ PPP is a high accuracy positioning method that seeks to correct errors in GNSS p
 Unlike differential GNSS techniques, which seek to measure GNSS errors using a nearby reference station, PPP is based in the robust modelling and estimation of systematic errors in the GNSS signals.
 In PPP, the GNSS measurements are modelled as normally distributed random variables with mean:
 
-$$
+\begin{alignat}{2} 
+\label{eq:code_UC_mea}
 E(P_{r,f}^s) 
 &= \rho_{r}^s 
 + c(dt_{r}^q - dt^s) 
@@ -15,6 +17,7 @@ E(P_{r,f}^s)
 + d_{r,f}^q
 + d_{f}^s
 \\
+\label{eq:phase_UC_mea}
 E(L_{r,f}^s) 
 &= \rho_{r}^s 
 + c(dt_{r}^q - dt^s) 
@@ -24,42 +27,42 @@ E(L_{r,f}^s)
 - b_{f}^s
 + \lambda_{f} z_{r,f}^s  
 + \phi^s_{r,f}
+\end{alignat}
 
-$$
-and a constant or elevation dependent variance.\\
-$$
+and a constant or elevation dependent variance.
 
+\begin{equation} \label{eq:code_UC_var}
 \sigma(P_{r,f}^s) = \sigma_0 / sin^2(\theta_{el})
-$$
-In equations \ref{eq:code_UC_mea} and \ref{eq:code_UC_var},
+\end{equation}
 
-\begin{tabbing}
-	\phantom{$_r,_j,^s.$}\= \kill
-$P_{r,f}^S$ \> represents the pseudorange measurements (m) between satellite $s$ and receiver $r$ for carrier frequency f.\\
-$L_{r,f}^s$ \> represents the carrier phase measurements (m)\\
-$E()$ \>  notates the expectation and  $ \sigma() $ the variance.\\
-$\rho$ \> the geometric distance (m)\\
-$c$ \> speed of light (m/s)\\
-$dt_r^q$ \> receiver clock offset (s)\\
-$dt^s$ \> satellite clock offset (s)\\
-$\tau_r^s $ \> slant troposphere delay between satellite $s$ and receiver $r$ (m)\\
-$\mu_f$ \> Ionosphere delay factor for frequency $f$\\
-$I^s_r$ \> slant Ionosphere delay for $s$ and receiver $r$ (m)\\
-$d_{r,f}^q$ \> receiver hardware bias for pseudoranges (m)\\
-$d_{f}^s$ \> satellite hardware bias for pseudoranges (m)\\
-$b_{r,f}^q$ \> receiver ionosphere-free phase bias (m)\\
-$b_{f}^s$ \> satellite ionosphere-free phase bias (m)\\
-$\lambda_{f}$ \> the signal carrier wavelength for frequency $f$(m)\\
-$z_{r,f}^S$ \> carrier phase ambiguity (cycle)
-\end{tabbing}
+In these equations:
 
-High accuracy GNSS position estimation requires precise estimation of the geometric distance  $\rho_{r}^s$. The effect of other parameter in \ref{eq:code_UC_mea} and \ref{eq:phase_UC_mea} needs to be eliminated either by modelling/estimating or, in the case of Ionosphere delays, by using linear combinations.\\
+| Variable		| Description																									|
+| -				| -																												|
+| $P_{r,f}^S$	| represents the pseudorange measurements (m) between satellite $s$ and receiver $r$ for carrier frequency f. 	| 
+| $L_{r,f}^s$	| represents the carrier phase measurements (m) 																|
+| $E()$			| notates the expectation and  $ \sigma() $ the variance. 														|
+| $\rho$		| the geometric distance (m) 																					|
+| $c$			| speed of light (m/s) 																							|
+| $dt_r^q$		| receiver clock offset (s)                                                                                 	|
+| $dt^s$		| satellite clock offset (s)                                                                                  	|
+| $\tau_r^s $	| slant troposphere delay between satellite $s$ and receiver $r$ (m)                                          	|
+| $\mu_f$		| Ionosphere delay factor for frequency $f$																		|
+| $I^s_r$		| slant Ionosphere delay for $s$ and receiver $r$ (m)															|
+| $d_{r,f}^q$	| receiver hardware bias for pseudoranges (m)																	|
+| $d_{f}^s$		| satellite hardware bias for pseudoranges (m)																	|
+| $b_{r,f}^q$	| receiver ionosphere-free phase bias (m)																		|
+| $b_{f}^s$ 	| satellite ionosphere-free phase bias (m)																		|
+| $\lambda_{f}$ | the signal carrier wavelength for frequency $f$(m)															|
+| $z_{r,f}^S$	| carrier phase ambiguity (cycle)																				|
+
+High accuracy GNSS position estimation requires precise estimation of the geometric distance  $\rho_{r}^s$. The effect of other parameter in \ref{eq:code_UC_mea} and \ref{eq:phase_UC_mea} needs to be eliminated either by modelling/estimating or, in the case of Ionosphere delays, by using linear combinations.
  
 For PPP processing, the geometric distance  $\rho_{r}^s$ is linearized around a-priori values of satellite and receiver positions.
 \begin{equation} \label{eq:rho_mean}
 \rho_{r}^{s} = \sqrt{X^{s-} - X_r^-}+\Delta X^{s} - \Delta X_r
 \end{equation}
-where $X^{s-}$ is the a-priory satellite position with respect to the earth centre and $X_r^-$ the receiver/station position. \\
+where $X^{s-}$ is the a-priory satellite position with respect to the earth centre and $X_r^-$ the receiver/station position.
 The satellite position can be assumed known, and read from external sources, or estimated from the GNSS measurements. When estimated by Ginan, the a-priori satellite position is defined as a function of initial satellite position, initial satellite velocity and up to 15 solar radiation pressure parameters as explained in chapter \ref{ch:orb_modelling}. Then the each satellite position component is linearized with respect to the orbit parameters.
 \begin{equation} \label{eq:sat_pos_linear}
 \Delta X^{s} = - \dot {e_{rec}} {\sum{ \frac{\partial X^{s} } {\partial OP_{i} } \Delta OP_{i} }}
@@ -70,9 +73,9 @@ The station/receiver position can be assumed known (and read from a SINEX file),
 \begin{equation} \label{eq:rec_pos_linear}
 \Delta X_r =  \dot {e_{rec}} { \Delta X_r }
 \end{equation} 
-$\Delta X_r$ is the difference between the estimated and the a-priori value of $X_r$. The SPP is calculated each epoch by applying iterative least squares on pseudorange measurements (SPP is initialised at the centre of earth and updated for each of up to a 10 iterations).\\
+$\Delta X_r$ is the difference between the estimated and the a-priori value of $X_r$. The SPP is calculated each epoch by applying iterative least squares on pseudorange measurements (SPP is initialised at the centre of earth and updated for each of up to a 10 iterations).
 
-Satellite clock offsets can be assumed known, and obtained from external sources, or estimated as a random walk variable. the receiver clock is modelled as a random walk variable.\\
+Satellite clock offsets can be assumed known, and obtained from external sources, or estimated as a random walk variable. the receiver clock is modelled as a random walk variable.
 
 ## Ionosphere free combination
 The current version of the Ginan software, the effect of Ionosphere delay is eliminated using the Ionosphere free combination of two measurements. Thus the Ionosphere-free combination of pseudorange
@@ -139,8 +142,8 @@ where
 \end{equation} 
 \begin{equation}\label{eq:mod_phase_bia_sat}
 \tilde{b_{f}^{s}} = b_{f}^s + d_{f}^s - d_{IF}^s
-\end{equation} \\
-The current version of Ginan performs Ionosphere modelling separately, thus the phase biases estimated alongside geometric parameters like clocks and troposphere correspond to \ref{eq:mod_phase_bia_rec} and \ref{eq:mod_phase_bia_rec}.\\
+\end{equation} 
+The current version of Ginan performs Ionosphere modelling separately, thus the phase biases estimated alongside geometric parameters like clocks and troposphere correspond to \ref{eq:mod_phase_bia_rec} and \ref{eq:mod_phase_bia_rec}.
 
 When performing Ionospheric delay modelling, as detailed in chapter \ref{ch:ionosphere_modelling}, the Ginan software generates the an Ionosphere delay map from which to estimate $I^s_r$ and differential pseudorange biases $d_{r,1} - d_{r,2}$ and $d_{1}^s - d_{2}^s$. If the end user intends to use both Ionosphere corrections and ambiguity resolution, the following set of biases needs to be used alongside the Ionosphere maps for $I^s_r$:
 \begin{equation}\label{eq:ion_code_bia_sat}
